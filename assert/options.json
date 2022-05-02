@@ -1,10 +1,19 @@
 {
+  "backgroundColor": "#222",
+  "keyBackgroundColor": "#444",
+  "keyFontColor": "white",
+  "keyShadowColor": "#555",
+  "keyActiveBackgroundColor": "grey",
+  "keyActiveFontColor": "white",
   "fontSize": 14,
+  "fontFamily": "Config",
   "alwaysOnTop": true,
-  "toolBarMode": "none",
+  "toolBarMode": "debug",
   "toolBarFontSize": 14,
-  "keyCount": false,
+  "keyCount": true,
   "keyHeatmap": "none",
   "keyTotalCountMode": "strict",
-  "displayShortcut": false
+  "displayShortcut": false,
+  "antiMinimize": true,
+  "bounceTime": 200
 }

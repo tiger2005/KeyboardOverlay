@@ -59,6 +59,8 @@ This is a json file including all the function switchers and style settings. Key
 | keyHeatmap | "none", "lignt", "dark" or a number | Open heatmap and set brightness |
 | keyTotalCountMode | "normal" or "strict" | Open strict count mode |
 | displayShortcut | boolean | Open shortcut key displayer |
+| antiMinimize | boolean | Automately restore while minimizing the keyboard |
+| bounceTime | number | Milliseconds for a key to bounce up |
 
 Some details below:
 

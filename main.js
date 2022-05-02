@@ -49,10 +49,10 @@ app.on('ready', function() {
       mainWindow.close();
   })
   mainWindow.on('maximize', function () {
-   mainWindow.webContents.send('main-window-max');
+   // mainWindow.webContents.send('main-window-max');
   })
   mainWindow.on('unmaximize', function () {
-    mainWindow.webContents.send('main-window-unmax');
+    // mainWindow.webContents.send('main-window-unmax');
   })
   mainWindow.on('ready-to-show', function () {
     mainWindow.show();

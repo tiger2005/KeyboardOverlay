@@ -45,7 +45,7 @@
   font-family: var(--font-family);
   font-weight: 900;
   transform: translateY(0px);
-  transition: var(--bounce-time) transform, var(--bounce-time) box-shadow, var(--bounce-time) background, var(--bounce-time) color;
+  transition: var(--bounce-time);
   text-decoration: none;
   user-select: none;
   overflow: hidden;
@@ -140,7 +140,7 @@ body.at_desktop {
   z-index: 9;
   place-items: center;
   opacity: 0;
-  transition: 0.2s;
+  transition: var(--bounce-time);
   background: var(--background-color);
   width: 100%;
   height: 15px;

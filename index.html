@@ -154,10 +154,10 @@
 						$(".shortcutKeyContainer > div").append(`<span class='combo'> x${hitMatrix[ck]}</span>`);
 					}
 					if(toolBarMode === "debug")
-						$(".debugInfo").html("<i class='fas fa-turn-down'></i> #" + ck + " (" + (hitCount + 1) + "x)");
+						$(".debugInfo").html("<i class='fas fa-turn-down'></i> #" + ck + " (" + (hitMatrix[ck] + 1) + "x)");
 					return;
 				}
-				if(ck === 42 || ck === 54)
+				if(codeToKey[ck].switch === "Shift")
 					++ shiftOnEnter;
 				let p = codeToKey[ck].id.toUpperCase();
 				if(keyTotalCountMode === "normal" || keyCounter[p] !== undefined){
@@ -213,8 +213,8 @@
 					$(".debugInfo").html("<i class='fas fa-turn-up'/></i> #" + ck);
 				if(codeToKey[ck] === undefined)
 					return;
-				if(ck === 42 || ck === 54)
-					shiftOnEnter = Math.min(shiftOnEnter - 1, 0);
+				if(codeToKey[ck].switch === "Shift")
+					shiftOnEnter = Math.max(shiftOnEnter - 1, 0);
 				flushShift(e.shiftKey);
 				let p = codeToKey[ck].id.toUpperCase();
 				if(p !== undefined)
@@ -278,7 +278,7 @@
 					async: false,
 					success: function(data){
 						if(typeof data !== "object"){
-							errorMessage("Cannot load options.");
+							setErrorMessage("Cannot load options.");
 							return;
 						}
 						if(data.backgroundColor !== undefined)
@@ -317,9 +317,16 @@
 							keyCount = data.keyCount;
 						if(typeof data.displayShortcut === "boolean")
 							displayShortcut = data.displayShortcut;
+						if(data.antiMinimize === true) {
+							win.on('minimize', () => {
+								win.restore();
+							})
+						}
+						if(typeof data.bounceTime === "number")
+							document.documentElement.style.setProperty("--bounce-time", data.bounceTime + "ms");
 					},
 					error: function(){
-						errorMessage("Cannot load options.");
+						setErrorMessage("Cannot load options.");
 					}
 				});
 
@@ -392,7 +399,7 @@
 							}
 					},
 					error: function(){
-						errorMessage("Cannot load icon list.");
+						setErrorMessage("Cannot load icon list.");
 					}
 				});
 
