@@ -30,6 +30,7 @@ This command will add a folder `/node_modules/iohook/builds`, with pre-build fil
 - The project supports many functions such as key count, key heatmap, cps and shortcur key displays.
 - The project is cross-platform, and all you need to do is to change the key bindings.
 - You can change the permutation of the keyboard to almost anyway you like.
+- The keyboard will keep rendering if you don't minimize it, so you can use it in capture softwares such as OBS Studio.
 - You can put your mouse to the bottom of the keyboard, and click the lock icon to lock the keyboard. In this situation, no actions will be provided unless you click the lock icon again and unlock the keyboard.
 ![W5W_WN_QH494_A_R`RF@_8Y.png](https://s2.loli.net/2022/05/02/oCxGhit7DIVSNPu.png)
 
