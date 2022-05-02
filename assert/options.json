@@ -1,11 +1,11 @@
 {
   "fontSize": 14,
-  "fontFamily": "Config",
+  "fontFamily": "Config, Monaco, Menlo, \"Ubuntu Mono\", Consolas, source-code-pro, monospace",
   "alwaysOnTop": true,
   "toolBarMode": "cps",
   "toolBarFontSize": 14,
   "keyCount": false,
-  "keyHeatmap": "light",
+  "keyHeatmap": "none",
   "keyTotalCountMode": "strict",
   "displayShortcut": false,
   "antiMinimize": false,

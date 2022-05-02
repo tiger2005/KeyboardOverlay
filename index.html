@@ -32,20 +32,22 @@
 		</script>
 	</head>
 	<body>
-		<div class='innerContent' style="display: inline-flex; flex-direction: column; overflow: hidden; position: fixed; top: 0; left: 0">
-			<div style="overflow: hidden">
-				<div class="shortcutKeyContainer">
-					Shortkey
+		<div style="position: relative;">
+			<div class='innerContent' style="display: inline-flex; flex-direction: column; overflow: hidden; position: fixed; top: 0; left: 0">
+				<div style="overflow: hidden">
+					<div class="shortcutKeyContainer">
+						Shortkey
+					</div>
+				</div>
+				<div class="keyboardContainer">
 				</div>
 			</div>
-			<div class="keyboardContainer">
+			<div class="lockerMask closed">
+				<i class="fas fa-lock"></i>
 			</div>
 		</div>
-		<div class="lockerMask closed">
-			<i class="fas fa-lock"></i>
-		</div>
 	</body>
-	<footer>
+	<footer style="position: fixed;">
 		<script tyle="text/javascript">
 			let tmpList = [];
 			var keys = [];
@@ -141,7 +143,7 @@
 			const keydownEvent = (e) => {
 				if(keyboardLocked)
 					return;
-				const ck = (runInElectron ? e.keycode : e.keyCode);
+				const ck = (runInElectron ? e.keycode : e.code);
 				if(toolBarMode === "debug")
 					$(".debugInfo").html("<i class='fas fa-turn-down'></i> #" + ck);
 				if(codeToKey[ck] === undefined)
@@ -207,7 +209,7 @@
 			const keyupEvent = (e) => {
 				if(keyboardLocked)
 					return;
-				const ck = (runInElectron ? e.keycode : e.keyCode);
+				const ck = (runInElectron ? e.keycode : e.code);
 				hitMatrix[ck] = 0;
 				if(toolBarMode === "debug")
 					$(".debugInfo").html("<i class='fas fa-turn-up'/></i> #" + ck);
@@ -244,6 +246,8 @@
 			}
 			else{
 				$("body").addClass("at_desktop");
+				$(".innerContent").css("position", "relative");
+				$(".lockerMask").css("position", "absolute");
 				$("html").keydown(keydownEvent);
 				$("html").keyup(keyupEvent);
 			}
@@ -337,7 +341,7 @@
 					return;
 
 				$.ajax({
-					url: "assert/bindings.json",
+					url: (runInElectron ? "assert/bindings.json" : "assert/bindings_web.json"),
 					async: false,
 					success: function(data){
 						if(typeof data !== "object" || ! data.hasOwnProperty("length")){
@@ -355,14 +359,14 @@
 								setErrorMessage("Cannot get name from key no. " + (i + 1) + ".");
 								return;
 							}
-							if(typeof keys[i].code !== "number" && (typeof keys[i].code !== "object" || ! keys[i].code.hasOwnProperty("length"))){
+							if(typeof keys[i].code !== "number" && typeof keys[i].code !== "string" && (typeof keys[i].code !== "object" || ! keys[i].code.hasOwnProperty("length"))){
 								setErrorMessage("Cannot get code from key no. " + (i + 1) + ".");
 								return;
 							}
 							if(keys[i].name === "")
 								keys[i].name = "&nbsp;";
 							idToKey[keys[i].id.toUpperCase()] = keys[i];
-							if(typeof keys[i].code === "number")
+							if(typeof keys[i].code === "number" || typeof keys[i].code === "string")
 								codeToKey[keys[i].code] = keys[i];
 							else
 								for(var j = 0; j < keys[i].code.length; j ++)

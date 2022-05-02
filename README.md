@@ -109,7 +109,7 @@ Example code:
 
 ---
 
-### bindings.json
+### bindings.json / bindings_web.json
 
 This is a json file, describing a list of keys and their codes.
 
@@ -119,9 +119,9 @@ You should describe each key by these arguments:
 
 ```
 {
-  "id": "0",        // The id of the key
-  "name": "0",      // The name of the key (use as the text on keyboard)
-  "code": 11,       // Key code. Can be an array of key codes
+  "id": "0",        // The id of the key.
+  "name": "0",      // The name of the key (use as the text on keyboard).
+  "code": 11,       // Key code. Can be an array of key codes. Each code can be a number or a string.
   "upperKey": ")",  // Upper key name of the key. Can be absent.
   "switch": "Shift" // Switch name of the key in shortcut. Can be absent.
 }
@@ -131,7 +131,7 @@ Notice that each keys can overwrite the bindings of previous keys.
 
 The default key binding set is for Windows. If you are MacOS or Linux user, please make a key binding list in `debug mode`, save in `/example` folder and set up a Pull Request.
 
-You can preview the styles of keyboard by Live Server but, as I've mentiond, the key codes of browsers will be different, so the actions of keys will be werid.
+You can preview the styles of keyboard by Live Server. In this time, we will use bindings_web.json as key binding file. I provide all the key bindings I can find on Windows, so if you are Linux or MacOS user and want to extend the list, please let me know.
 
 ---
 

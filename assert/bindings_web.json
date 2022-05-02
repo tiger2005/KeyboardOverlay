@@ -1,441 +1,441 @@
 [{
   "id": "Esc",
   "name": "Esc",
-  "code": 1
+  "code": "Escape"
 }, {
   "id": "F1",
   "name": "F1",
-  "code": 59
+  "code": "F1"
 }, {
   "id": "F2",
   "name": "F2",
-  "code": 60
+  "code": "F2"
 }, {
   "id": "F3",
   "name": "F3",
-  "code": 61
+  "code": "F3"
 }, {
   "id": "F4",
   "name": "F4",
-  "code": 62
+  "code": "F4"
 }, {
   "id": "F5",
   "name": "F5",
-  "code": 63
+  "code": "F5"
 }, {
   "id": "F6",
   "name": "F6",
-  "code": 64
+  "code": "F6"
 }, {
   "id": "F7",
   "name": "F7",
-  "code": 65
+  "code": "F7"
 }, {
   "id": "F8",
   "name": "F8",
-  "code": 66
+  "code": "F8"
 }, {
   "id": "F9",
   "name": "F9",
-  "code": 67
+  "code": "F9"
 }, {
   "id": "F10",
   "name": "F10",
-  "code": 68
+  "code": "F10"
 }, {
   "id": "F11",
   "name": "F11",
-  "code": 87
+  "code": "F12"
 }, {
   "id": "F12",
   "name": "F12",
-  "code": 88
+  "code": "F12"
 }, {
   "id": "`",
   "name": "`",
-  "code": 41,
+  "code": "Backquote",
   "upperKey": "~"
 }, {
   "id": "1",
   "name": "1",
-  "code": 2,
+  "code": "Digit1",
   "upperKey": "!"
 }, {
   "id": "2",
   "name": "2",
-  "code": 3,
+  "code": "Digit2",
   "upperKey": "@"
 }, {
   "id": "3",
   "name": "3",
-  "code": 4,
+  "code": "Digit3",
   "upperKey": "#"
 }, {
   "id": "4",
   "name": "4",
-  "code": 5,
+  "code": "Digit4",
   "upperKey": "$"
 }, {
   "id": "5",
   "name": "5",
-  "code": 6,
+  "code": "Digit5",
   "upperKey": "%"
 }, {
   "id": "6",
   "name": "6",
-  "code": 7,
+  "code": "Digit6",
   "upperKey": "^"
 }, {
   "id": "7",
   "name": "7",
-  "code": 8,
+  "code": "Digit7",
   "upperKey": "&"
 }, {
   "id": "8",
   "name": "8",
-  "code": 9,
+  "code": "Digit8",
   "upperKey": "*"
 }, {
   "id": "9",
   "name": "9",
-  "code": 10,
+  "code": "Digit9",
   "upperKey": "("
 }, {
   "id": "0",
   "name": "0",
-  "code": 11,
+  "code": "Digit0",
   "upperKey": ")"
 }, {
   "id": "-",
   "name": "-",
-  "code": 12,
+  "code": "Minus",
   "upperKey": "_"
 }, {
   "id": "=",
   "name": "=",
-  "code": 13,
+  "code": "Equal",
   "upperKey": "+"
 }, {
   "id": "Backspace",
   "name": "BACKSPACE",
-  "code": 14
+  "code": "Backspace"
 }, {
   "id": "Tab",
   "name": "TAB",
-  "code": 15
+  "code": "Tab"
 }, {
   "id": "q",
   "name": "Q",
-  "code": 16
+  "code": "KeyQ"
 }, {
   "id": "w",
   "name": "W",
-  "code": 17
+  "code": "KeyW"
 }, {
   "id": "e",
   "name": "E",
-  "code": 18
+  "code": "KeyE"
 }, {
   "id": "r",
   "name": "R",
-  "code": 19
+  "code": "KeyR"
 }, {
   "id": "t",
   "name": "T",
-  "code": 20
+  "code": "KeyT"
 }, {
   "id": "y",
   "name": "Y",
-  "code": 21
+  "code": "KeyY"
 }, {
   "id": "u",
   "name": "U",
-  "code": 22
+  "code": "KeyU"
 }, {
   "id": "i",
   "name": "I",
-  "code": 23
+  "code": "KeyI"
 }, {
   "id": "o",
   "name": "O",
-  "code": 24
+  "code": "KeyO"
 }, {
   "id": "p",
   "name": "P",
-  "code": 25
+  "code": "KeyP"
 }, {
   "id": "[",
   "name": "[",
-  "code": 26,
+  "code": "BracketLeft",
   "upperKey": "{"
 }, {
   "id": "]",
   "name": "]",
-  "code": 27,
+  "code": "BracketRight",
   "upperKey": "}"
 }, {
   "id": "\\",
   "name": "\\",
-  "code": 43,
+  "code": "Backslash",
   "upperKey": "|"
 }, {
   "id": "CapsLock",
   "name": "Caps",
-  "code": 58
+  "code": "CapsLock"
 }, {
   "id": "a",
   "name": "A",
-  "code": 30
+  "code": "KeyA"
 }, {
   "id": "s",
   "name": "S",
-  "code": 31
+  "code": "KeyS"
 }, {
   "id": "d",
   "name": "D",
-  "code": 32
+  "code": "KeyD"
 }, {
   "id": "f",
   "name": "F",
-  "code": 33
+  "code": "KeyF"
 }, {
   "id": "g",
   "name": "G",
-  "code": 34
+  "code": "KeyG"
 }, {
   "id": "h",
   "name": "H",
-  "code": 35
+  "code": "KeyH"
 }, {
   "id": "j",
   "name": "J",
-  "code": 36
+  "code": "KeyJ"
 }, {
   "id": "k",
   "name": "K",
-  "code": 37
+  "code": "KeyK"
 }, {
   "id": "l",
   "name": "L",
-  "code": 38
+  "code": "KeyL"
 }, {
   "id": ";",
   "name": ";",
-  "code": 39,
+  "code": "Semicolon",
   "upperKey": ":"
 }, {
   "id": "'",
   "name": "'",
-  "code": 40,
+  "code": "Quote",
   "upperKey": "\""
 }, {
   "id": "Enter",
   "name": "Enter",
-  "code": 28
+  "code": "Enter"
 }, {
   "id": "ShiftLeft",
   "name": "Shift",
-  "code": 42,
+  "code": "ShiftLeft",
   "switch": "Shift"
 }, {
   "id": "z",
   "name": "Z",
-  "code": 44
+  "code": "KeyZ"
 }, {
   "id": "x",
   "name": "X",
-  "code": 45
+  "code": "KeyX"
 }, {
   "id": "c",
   "name": "C",
-  "code": 46
+  "code": "KeyC"
 }, {
   "id": "v",
   "name": "V",
-  "code": 47
+  "code": "KeyV"
 }, {
   "id": "b",
   "name": "B",
-  "code": 48
+  "code": "KeyB"
 }, {
   "id": "n",
   "name": "N",
-  "code": 49
+  "code": "KeyN"
 }, {
   "id": "m",
   "name": "M",
-  "code": 50
+  "code": "KeyM"
 }, {
   "id": ",",
   "name": ",",
-  "code": 51,
+  "code": "Comma",
   "upperKey": "<"
 }, {
   "id": ".",
   "name": ".",
-  "code": 52,
+  "code": "Period",
   "upperKey": ">"
 }, {
   "id": "/",
   "name": "/",
-  "code": 53,
+  "code": "Slash",
   "upperKey": "?"
 }, {
   "id": "ShiftRight",
   "name": "Shift",
-  "code": 54,
+  "code": "ShiftRight",
   "switch": "Shift"
 }, {
   "id": "CtrlLeft",
   "name": "Ctrl",
-  "code": 29,
+  "code": "ControlLeft",
   "switch": "Ctrl"
 }, {
   "id": "Windows",
   "name": "Windows",
-  "code": 3675,
+  "code": "MetaLeft",
   "switch": "Win"
 }, {
   "id": "AltLeft",
   "name": "Alt",
-  "code": 56,
+  "code": "AltLeft",
   "switch": "Alt"
 }, {
   "id": "Space",
   "name": " ",
-  "code": 57
+  "code": "Space"
 }, {
   "id": "AltRight",
   "name": "Alt",
-  "code": 3640,
+  "code": "AltRight",
   "switch": "Alt"
 }, {
   "id": "Menu",
   "name": "Menu",
-  "code": 3677
+  "code": "ContextMenu"
 }, {
   "id": "CtrlRight",
   "name": "Ctrl",
-  "code": 3613,
+  "code": "ControlRight",
   "switch": "Ctrl"
 }, {
   "id": "Up",
   "name": "↑",
-  "code": 61000
+  "code": "ArrowUp"
 }, {
   "id": "Down",
   "name": "↓",
-  "code": 61008
+  "code": "ArrowDown"
 }, {
   "id": "Left",
   "name": "←",
-  "code": 61003
+  "code": "ArrowLeft"
 }, {
   "id": "Right",
   "name": "→",
-  "code": 61005
+  "code": "ArrowRight"
 }, {
   "id": "PrtSc",
   "name": "PrtSc",
-  "code": 3639
+  "code": "PrintScreen"
 }, {
   "id": "ScrollLock",
   "name": "ScrollLock",
-  "code": 70
+  "code": "ScrollLock"
 }, {
   "id": "Pause",
   "name": "Pause",
-  "code": 3653
+  "code": "Pause"
 }, {
   "id": "Insert",
   "name": "Insert",
-  "code": 61010
+  "code": "Insert"
 }, {
   "id": "Home",
   "name": "Home",
-  "code": 60999
+  "code": "Home"
 }, {
   "id": "PgUp",
   "name": "PgUp",
-  "code": 61001
+  "code": "PageUp"
 }, {
   "id": "Delete",
   "name": "Delete",
-  "code": 61011
+  "code": "Delete"
 }, {
   "id": "End",
   "name": "End",
-  "code": 61007
+  "code": "End"
 }, {
   "id": "PgDn",
   "name": "PgDn",
-  "code": 61009
+  "code": "PageDown"
 }, {
   "id": "NumPadAdd",
   "name": "+",
-  "code": 78
+  "code": "NumpadAdd"
 }, {
   "id": "NumpadSubtract",
   "name": "-",
-  "code": 74
+  "code": "NumpadSubtract"
 }, {
   "id": "NumPadMultiply",
   "name": "*",
-  "code": 55
+  "code": "NumpadMultiply"
 }, {
   "id": "NumPadDivide",
   "name": "/",
-  "code": 3637
+  "code": "NumpadDivide"
 }, {
   "id": "NumPad0",
   "name": "0",
-  "code": [82, 3666]
+  "code": "Numpad0"
 }, {
   "id": "NumPad1",
   "name": "1",
-  "code": [79, 3663]
+  "code": "Numpad1"
 }, {
   "id": "NumPad2",
   "name": "2",
-  "code": [80, 57424]
+  "code": "Numpad2"
 }, {
   "id": "NumPad3",
   "name": "3",
-  "code": [81, 3665]
+  "code": "Numpad3"
 }, {
   "id": "NumPad4",
   "name": "4",
-  "code": [75, 57419]
+  "code": "Numpad4"
 }, {
   "id": "NumPad5",
   "name": "5",
-  "code": [76, 57420]
+  "code": "Numpad5"
 }, {
   "id": "NumPad6",
   "name": "6",
-  "code": [77, 57421]
+  "code": "Numpad6"
 }, {
   "id": "NumPad7",
   "name": "7",
-  "code": [71, 3655]
+  "code": "Numpad7"
 }, {
   "id": "NumPad8",
   "name": "8",
-  "code": [72, 57416]
+  "code": "Numpad8"
 }, {
   "id": "NumPad9",
   "name": "9",
-  "code": [73, 3657]
+  "code": "Numpad9"
 }, {
   "id": "NumpadDecimal",
   "name": ".",
-  "code": [83, 3667]
+  "code": "NumpadDecimal"
 }, {
   "id": "NumPadEnter",
   "name": "Enter",
-  "code": 3612
+  "code": "NumpadEnter"
 }, {
   "id": "NumsLock",
   "name": "NumsLock",
-  "code": 69
+  "code": "NumLock"
 }]
