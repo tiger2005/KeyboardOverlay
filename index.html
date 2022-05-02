@@ -32,7 +32,7 @@
 		</script>
 	</head>
 	<body>
-		<div class='innerContent' style="display: inline-flex; flex-direction: column; overflow: hidden;">
+		<div class='innerContent' style="display: inline-flex; flex-direction: column; overflow: hidden; position: fixed; top: 0; left: 0">
 			<div style="overflow: hidden">
 				<div class="shortcutKeyContainer">
 					Shortkey
@@ -530,7 +530,7 @@
 								$(this).css("background", getColorFromPercent(0, keyHeatmap));
 						});
 						if(runInElectron){
-								win.setSize(Math.ceil($("body").outerWidth()), Math.ceil($("body").outerHeight()));
+								win.setSize(Math.ceil($(".innerContent").outerWidth()), Math.ceil($(".innerContent").outerHeight()));
 						}
 					},
 					error: function(){
