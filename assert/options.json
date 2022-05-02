@@ -4,7 +4,7 @@
   "alwaysOnTop": true,
   "toolBarMode": "cps",
   "toolBarFontSize": 14,
-  "keyCount": true,
+  "keyCount": false,
   "keyHeatmap": "light",
   "keyTotalCountMode": "strict",
   "displayShortcut": false,
