@@ -14,6 +14,14 @@
         "build": "electron-builder --mac --windows --linux",
         "release": "electron-builder --mac --windows --linux --publish always"
     },
+    "build": {
+        "productName":"Keyboard_Overlay",
+        "appId": "Keyboard_Overlay", 
+        "copyright":"MIT",
+        "directories": {
+          "output": "build"
+        }
+    },
     "iohook": {
         "targets": [
             "electron-87"
