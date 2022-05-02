@@ -5,9 +5,9 @@
   "toolBarMode": "cps",
   "toolBarFontSize": 14,
   "keyCount": false,
-  "keyHeatmap": "none",
+  "keyHeatmap": "light",
   "keyTotalCountMode": "strict",
-  "displayShortcut": false,
+  "displayShortcut": true,
   "antiMinimize": false,
   "bounceTime": 200
 }
