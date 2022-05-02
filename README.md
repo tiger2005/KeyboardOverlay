@@ -1,4 +1,4 @@
-# KeyboardMonitor
+# KeyboardOverlay
 
 A highly customizable keyboard displayer, including shortcut keys, key count, cps display and so on.
 
