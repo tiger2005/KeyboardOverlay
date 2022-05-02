@@ -274,7 +274,7 @@
 
 			const refreshOverallInfo = () => {
 				$.ajax({
-					url: "options.json",
+					url: "assert/options.json",
 					async: false,
 					success: function(data){
 						if(typeof data !== "object"){
@@ -330,7 +330,7 @@
 					return;
 
 				$.ajax({
-					url: "bindings.json",
+					url: "assert/bindings.json",
 					async: false,
 					success: function(data){
 						if(typeof data !== "object" || ! data.hasOwnProperty("length")){
@@ -376,7 +376,7 @@
 					return;
 
 				$.ajax({
-					url: "icons.json",
+					url: "assert/icons.json",
 					async: false,
 					success: function(data){
 						if(typeof data !== "object"){
@@ -412,7 +412,7 @@
 				}
 
 				$.ajax({
-					url: "map.txt",
+					url: "assert/map.txt",
 					async: false,
 					success: function(data) {
 						var res = "";
