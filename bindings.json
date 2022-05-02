@@ -1,0 +1,441 @@
+[{
+  "id": "Esc",
+  "name": "Esc",
+  "code": 1
+}, {
+  "id": "F1",
+  "name": "F1",
+  "code": 59
+}, {
+  "id": "F2",
+  "name": "F2",
+  "code": 60
+}, {
+  "id": "F3",
+  "name": "F3",
+  "code": 61
+}, {
+  "id": "F4",
+  "name": "F4",
+  "code": 62
+}, {
+  "id": "F5",
+  "name": "F5",
+  "code": 63
+}, {
+  "id": "F6",
+  "name": "F6",
+  "code": 64
+}, {
+  "id": "F7",
+  "name": "F7",
+  "code": 65
+}, {
+  "id": "F8",
+  "name": "F8",
+  "code": 66
+}, {
+  "id": "F9",
+  "name": "F9",
+  "code": 67
+}, {
+  "id": "F10",
+  "name": "F10",
+  "code": 68
+}, {
+  "id": "F11",
+  "name": "F11",
+  "code": 87
+}, {
+  "id": "F12",
+  "name": "F12",
+  "code": 88
+}, {
+  "id": "`",
+  "name": "`",
+  "code": 41,
+  "upperKey": "~"
+}, {
+  "id": "1",
+  "name": "1",
+  "code": 2,
+  "upperKey": "!"
+}, {
+  "id": "2",
+  "name": "2",
+  "code": 3,
+  "upperKey": "@"
+}, {
+  "id": "3",
+  "name": "3",
+  "code": 4,
+  "upperKey": "#"
+}, {
+  "id": "4",
+  "name": "4",
+  "code": 5,
+  "upperKey": "$"
+}, {
+  "id": "5",
+  "name": "5",
+  "code": 6,
+  "upperKey": "%"
+}, {
+  "id": "6",
+  "name": "6",
+  "code": 7,
+  "upperKey": "^"
+}, {
+  "id": "7",
+  "name": "7",
+  "code": 8,
+  "upperKey": "&"
+}, {
+  "id": "8",
+  "name": "8",
+  "code": 9,
+  "upperKey": "*"
+}, {
+  "id": "9",
+  "name": "9",
+  "code": 10,
+  "upperKey": "("
+}, {
+  "id": "0",
+  "name": "0",
+  "code": 11,
+  "upperKey": ")"
+}, {
+  "id": "-",
+  "name": "-",
+  "code": 12,
+  "upperKey": "_"
+}, {
+  "id": "=",
+  "name": "=",
+  "code": 13,
+  "upperKey": "+"
+}, {
+  "id": "Backspace",
+  "name": "BACKSPACE",
+  "code": 14
+}, {
+  "id": "Tab",
+  "name": "TAB",
+  "code": 15
+}, {
+  "id": "q",
+  "name": "Q",
+  "code": 16
+}, {
+  "id": "w",
+  "name": "W",
+  "code": 17
+}, {
+  "id": "e",
+  "name": "E",
+  "code": 18
+}, {
+  "id": "r",
+  "name": "R",
+  "code": 19
+}, {
+  "id": "t",
+  "name": "T",
+  "code": 20
+}, {
+  "id": "y",
+  "name": "Y",
+  "code": 21
+}, {
+  "id": "u",
+  "name": "U",
+  "code": 22
+}, {
+  "id": "i",
+  "name": "I",
+  "code": 23
+}, {
+  "id": "o",
+  "name": "O",
+  "code": 24
+}, {
+  "id": "p",
+  "name": "P",
+  "code": 25
+}, {
+  "id": "[",
+  "name": "[",
+  "code": 26,
+  "upperKey": "{"
+}, {
+  "id": "]",
+  "name": "]",
+  "code": 27,
+  "upperKey": "}"
+}, {
+  "id": "\\",
+  "name": "\\",
+  "code": 43,
+  "upperKey": "|"
+}, {
+  "id": "CapsLock",
+  "name": "Caps",
+  "code": 58
+}, {
+  "id": "a",
+  "name": "A",
+  "code": 30
+}, {
+  "id": "s",
+  "name": "S",
+  "code": 31
+}, {
+  "id": "d",
+  "name": "D",
+  "code": 32
+}, {
+  "id": "f",
+  "name": "F",
+  "code": 33
+}, {
+  "id": "g",
+  "name": "G",
+  "code": 34
+}, {
+  "id": "h",
+  "name": "H",
+  "code": 35
+}, {
+  "id": "j",
+  "name": "J",
+  "code": 36
+}, {
+  "id": "k",
+  "name": "K",
+  "code": 37
+}, {
+  "id": "l",
+  "name": "L",
+  "code": 38
+}, {
+  "id": ";",
+  "name": ";",
+  "code": 39,
+  "upperKey": ":"
+}, {
+  "id": "'",
+  "name": "'",
+  "code": 40,
+  "upperKey": "\""
+}, {
+  "id": "Enter",
+  "name": "Enter",
+  "code": 28
+}, {
+  "id": "ShiftLeft",
+  "name": "Shift",
+  "code": 42,
+  "switch": "Shift"
+}, {
+  "id": "z",
+  "name": "Z",
+  "code": 44
+}, {
+  "id": "x",
+  "name": "X",
+  "code": 45
+}, {
+  "id": "c",
+  "name": "C",
+  "code": 46
+}, {
+  "id": "v",
+  "name": "V",
+  "code": 47
+}, {
+  "id": "b",
+  "name": "B",
+  "code": 48
+}, {
+  "id": "n",
+  "name": "N",
+  "code": 49
+}, {
+  "id": "m",
+  "name": "M",
+  "code": 50
+}, {
+  "id": ",",
+  "name": ",",
+  "code": 51,
+  "upperKey": "<"
+}, {
+  "id": ".",
+  "name": ".",
+  "code": 52,
+  "upperKey": ">"
+}, {
+  "id": "/",
+  "name": "/",
+  "code": 53,
+  "upperKey": "?"
+}, {
+  "id": "ShiftRight",
+  "name": "Shift",
+  "code": 54,
+  "switch": "Shift"
+}, {
+  "id": "CtrlLeft",
+  "name": "Ctrl",
+  "code": 29,
+  "switch": "Ctrl"
+}, {
+  "id": "Windows",
+  "name": "Windows",
+  "code": 3675,
+  "switch": "Win"
+}, {
+  "id": "AltLeft",
+  "name": "Alt",
+  "code": 56,
+  "switch": "Alt"
+}, {
+  "id": "Space",
+  "name": " ",
+  "code": 57
+}, {
+  "id": "AltRight",
+  "name": "Alt",
+  "code": 3640,
+  "switch": "Alt"
+}, {
+  "id": "Menu",
+  "name": "Menu",
+  "code": 3677
+}, {
+  "id": "CtrlRight",
+  "name": "Ctrl",
+  "code": 3613,
+  "switch": "Ctrl"
+}, {
+  "id": "Up",
+  "name": "↑",
+  "code": 61000
+}, {
+  "id": "Down",
+  "name": "↓",
+  "code": 61008
+}, {
+  "id": "Left",
+  "name": "←",
+  "code": 61003
+}, {
+  "id": "Right",
+  "name": "→",
+  "code": 61005
+}, {
+  "id": "PrtSc",
+  "name": "PrtSc",
+  "code": 3639
+}, {
+  "id": "ScrollLock",
+  "name": "ScrollLock",
+  "code": 70
+}, {
+  "id": "Pause",
+  "name": "Pause",
+  "code": 3653
+}, {
+  "id": "Insert",
+  "name": "Insert",
+  "code": 61010
+}, {
+  "id": "Home",
+  "name": "Home",
+  "code": 60999
+}, {
+  "id": "PgUp",
+  "name": "PgUp",
+  "code": 61001
+}, {
+  "id": "Delete",
+  "name": "Delete",
+  "code": 61011
+}, {
+  "id": "End",
+  "name": "End",
+  "code": 61007
+}, {
+  "id": "PgDn",
+  "name": "PgDn",
+  "code": 61009
+}, {
+  "id": "NumPadAdd",
+  "name": "+",
+  "code": 78
+}, {
+  "id": "NumPadMinus",
+  "name": "-",
+  "code": 74
+}, {
+  "id": "NumPadMultiply",
+  "name": "*",
+  "code": 55
+}, {
+  "id": "NumPadDivide",
+  "name": "/",
+  "code": 3637
+}, {
+  "id": "NumPad0",
+  "name": "0",
+  "code": [82, 3666]
+}, {
+  "id": "NumPad1",
+  "name": "1",
+  "code": [79, 3663]
+}, {
+  "id": "NumPad2",
+  "name": "2",
+  "code": [80, 57424]
+}, {
+  "id": "NumPad3",
+  "name": "3",
+  "code": [81, 3665]
+}, {
+  "id": "NumPad4",
+  "name": "4",
+  "code": [75, 57419]
+}, {
+  "id": "NumPad5",
+  "name": "5",
+  "code": [76, 57420]
+}, {
+  "id": "NumPad6",
+  "name": "6",
+  "code": [77, 57421]
+}, {
+  "id": "NumPad7",
+  "name": "7",
+  "code": [71, 3655]
+}, {
+  "id": "NumPad8",
+  "name": "8",
+  "code": [72, 57416]
+}, {
+  "id": "NumPad9",
+  "name": "9",
+  "code": [73, 3657]
+}, {
+  "id": "NumPad.",
+  "name": ".",
+  "code": [83, 3667]
+}, {
+  "id": "NumPadEnter",
+  "name": "Enter",
+  "code": 3612
+}, {
+  "id": "NumsLock",
+  "name": "NumsLock",
+  "code": 69
+}]

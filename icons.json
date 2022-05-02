@@ -1,0 +1,13 @@
+{
+  "Windows": "<i class='fa-brands fa-windows'></i>",
+  "Backspace": "<i class='fas fa-delete-left'></i>",
+  "Menu": "<i class='fas fa-bars'></i>",
+  "Up": "<i class='fas fa-arrow-up'></i>",
+  "Left": "<i class='fas fa-arrow-left'></i>",
+  "Right": "<i class='fas fa-arrow-right'></i>",
+  "Down": "<i class='fas fa-arrow-down'></i>",
+  "Home": "<i class='fas fa-turn-up'></i>",
+  "End": "<i class='fas fa-turn-down'></i>",
+  "PgUp": "<i class='fas fa-angle-up'></i>",
+  "PgDn": "<i class='fas fa-angle-down'></i>"
+}

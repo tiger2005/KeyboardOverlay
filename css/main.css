@@ -1,0 +1,180 @@
+:root {
+  --background-color: #ccc;
+  --key-background-color: #fff;
+  --key-font-color: black;
+  --key-active-background-color: #ccc;
+  --key-active-font-color: black;
+  --bounce-time: 0.2s;
+  --font-size: 14px;
+  --font-family: Monaco, Menlo, "Ubuntu Mono", Consolas, source-code-pro, monospace;
+  --key-shadow-color: #FFF8;
+  --tool-bar-font-size: 1em;
+}
+.buttonDivCpoy {
+  display: inline-flex;
+  flex-direction: column;
+  background: var(--key-background-color);
+  border-radius: 3px;
+  text-align: center;
+  margin: 3px;
+  color: var(--key-font-color);
+  box-shadow: 0px 4px var(--key-shadow-color), 0px 4px 4px #0008;
+  font-family: var(--font-family);
+  font-weight: 900;
+  transform: translateY(0px);
+  transition: var(--bounce-time) transform, var(--bounce-time) box-shadow, var(--bounce-time) background, var(--bounce-time) color;
+  text-decoration: none;
+  user-select: none;
+  overflow: hidden;
+  font-size: 1em;
+  line-height: 1em;
+  height: 1em;
+  padding: 2px 5px;
+  min-width: 0.5em;
+}
+
+.buttonDiv {
+  display: flex;
+  flex-direction: column;
+  background: var(--key-background-color);
+  border-radius: 3px;
+  text-align: center;
+  margin: 3px;
+  color: var(--key-font-color);
+  box-shadow: 0px 4px var(--key-shadow-color), 0px 4px 4px #0008;
+  font-family: var(--font-family);
+  font-weight: 900;
+  transform: translateY(0px);
+  transition: var(--bounce-time) transform, var(--bounce-time) box-shadow, var(--bounce-time) background, var(--bounce-time) color;
+  text-decoration: none;
+  user-select: none;
+  overflow: hidden;
+}
+.buttonDiv span:first-child {
+  flex: 1;
+}
+.buttonDiv .counter {
+  font-size: 0.5em;
+  line-height: 1;
+}
+.buttonDiv.clicked {
+  background: var(--key-active-background-color);
+  color: var(--key-active-font-color);
+  box-shadow: 0px 1px #FFF8, 0px 1px 2px #0008;
+  transform: translateY(3px);
+  transition: 0.05s transform, 0.05s box-shadow, 0.05s background, 0.05s color;
+}
+body {
+  margin: 0px;
+  font-size: var(--font-size);
+  overflow: hidden;
+  display: inline-block;
+}
+
+body > div > div{
+  -webkit-app-region: drag;
+}
+
+body.at_desktop {
+  display: block;
+  width: 100%;
+  height: 100%;
+  display: grid;
+  place-items: center;
+}
+.keyboardContainer{
+  display: inline-block;
+  padding: 6px 3px;
+  background: var(--background-color);
+  border-radius: 3px;
+  overflow: visible;
+}
+.keyboardContainer > div{
+  overflow: hidden;
+}
+.debugInfo{
+  position: relative;
+  margin: 0px 3px;
+  font-size: 1em;
+  color: var(--key-font-color);
+  font-size: var(--tool-bar-font-size);
+  font-family: var(--font-family);
+  border-left: 4px solid var(--key-shadow-color);
+  padding-left: 6px;
+  overflow: hidden;
+}
+
+.shortcutKeyContainer{
+  display: none;
+  border-radius: 3px;
+  padding: 3px;
+  padding-top: 0px;
+  background: var(--background-color);
+  overflow: hidden;
+  margin-bottom: 5px;
+  font-size: var(--font-size);
+  font-family: var(--font-family);
+  color: var(--key-font-color);
+  height: calc(var(--font-size) + 14px);
+  line-height: calc(var(--font-size) + 14px);
+  text-align: center;
+}
+
+.shortcutKeyFlex {
+  display: inline-flex;
+  flex-direction: row;
+}
+
+.shortcutKeyFlex .combo {
+  margin: 3px;
+  line-height: 1;
+  line-height: calc(var(--font-size) + 10px);
+}
+
+.lockerMask {
+  -webkit-app-region: no-drag !important;
+  display: grid;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  z-index: 9;
+  place-items: center;
+  opacity: 0;
+  transition: 0.2s;
+  background: var(--background-color);
+  width: 100%;
+  height: 15px;
+  border-radius: 3px;
+}
+
+.lockerMask.closed:hover {
+  opacity: 1;
+  height: 30px;
+}
+
+.lockerMask.open {
+  background: transparent;
+  opacity: 1;
+  height: 100%;
+}
+
+.lockerMask > i{
+  font-size: 16px;
+  color: var(--key-font-color);
+  transition: 0.2s;
+  cursor: pointer;
+  z-index: 10;
+
+}
+
+.lockerMask.open > i {
+  font-size: min(calc(2 * var(--font-size)), 40px);
+}
+
+.innerContent {
+  transition: 0.2s filter;
+}
+
+.innerContent.addBlur {
+  filter: blur(5px);
+}
