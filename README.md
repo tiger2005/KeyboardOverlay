@@ -147,6 +147,30 @@ Let's say that the `default_size` of keys and blanks is `2 * default_font_size`.
 | `<Button> keyId width height fontSize` | A button defined by key id, with the size of `(default_size * width)px x (default_size * height)px` and the font size of `fontSize * default_font_size`. Arguments `width, height, fontSize` can be absent, with default values of 1 |
 | `<Icon> keyId width height fontSize` | Same as `<Button>`, but use the icon as the key text. |
 
+For example, you can quickly generate a 9-key keyboard by this code:
+
+```
+<Column>
+  <Row>
+    <Button> A 1 1.5
+    <Button> S 1 1.5
+    <Button> D 1 1.5
+    <Button> F 1 1.5
+    <Button> J 1 1.5
+    <Button> K 1 1.5
+    <Button> L 1 1.5
+    <Button> ; 1 1.5
+  </Row>
+  <Row>
+    <Blank> 1.5
+    <Button> Space 5
+    <Blank> 1.5
+  </Row>
+</Column>
+```
+
+![_3U__D_R_0VQSCXN76E_@@V.png](https://s2.loli.net/2022/05/02/zL3IX9URwJ2hyFr.png)
+
 In `/examples` folder, there are some templates of maps. You can make your own map file with the rules above. If you thought that your map file is practical, you can open an Issue and provide it.
 
 ---
