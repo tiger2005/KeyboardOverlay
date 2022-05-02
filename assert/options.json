@@ -14,6 +14,6 @@
   "keyHeatmap": "none",
   "keyTotalCountMode": "strict",
   "displayShortcut": false,
-  "antiMinimize": true,
+  "antiMinimize": false,
   "bounceTime": 200
 }
