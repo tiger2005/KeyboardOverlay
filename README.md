@@ -4,7 +4,7 @@ A highly customizable keyboard displayer, including shortcut keys, key count, cp
 
 ![RP53DLI5_NW`W21O4VM_PT6.png](https://s2.loli.net/2022/05/02/mldJFwyZ9aDzGCn.png)
 
-This is an example keyboard overlay, using map in windows-80.txt, cps mode and shortkey display. The font family is "Config".
+This is an example keyboard overlay, using map in windows-80.txt, cps mode and shortcut key display. The font family is "Config".
 
 This project is developed by Electron. It requires ioHook to capture global keyboard events, and FontAwesome v6 for icon library.
 
