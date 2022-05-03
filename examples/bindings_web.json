@@ -1,0 +1,466 @@
+[{
+  "id": "Esc",
+  "name": "Esc",
+  "code": "Escape"
+}, {
+  "id": "F1",
+  "name": "F1",
+  "code": "F1"
+}, {
+  "id": "F2",
+  "name": "F2",
+  "code": "F2"
+}, {
+  "id": "F3",
+  "name": "F3",
+  "code": "F3"
+}, {
+  "id": "F4",
+  "name": "F4",
+  "code": "F4"
+}, {
+  "id": "F5",
+  "name": "F5",
+  "code": "F5"
+}, {
+  "id": "F6",
+  "name": "F6",
+  "code": "F6"
+}, {
+  "id": "F7",
+  "name": "F7",
+  "code": "F7"
+}, {
+  "id": "F8",
+  "name": "F8",
+  "code": "F8"
+}, {
+  "id": "F9",
+  "name": "F9",
+  "code": "F9"
+}, {
+  "id": "F10",
+  "name": "F10",
+  "code": "F10"
+}, {
+  "id": "F11",
+  "name": "F11",
+  "code": "F12"
+}, {
+  "id": "F12",
+  "name": "F12",
+  "code": "F12"
+}, {
+  "id": "`",
+  "name": "`",
+  "code": "Backquote",
+  "upperKey": "~"
+}, {
+  "id": "1",
+  "name": "1",
+  "code": "Digit1",
+  "upperKey": "!"
+}, {
+  "id": "2",
+  "name": "2",
+  "code": "Digit2",
+  "upperKey": "@"
+}, {
+  "id": "3",
+  "name": "3",
+  "code": "Digit3",
+  "upperKey": "#"
+}, {
+  "id": "4",
+  "name": "4",
+  "code": "Digit4",
+  "upperKey": "$"
+}, {
+  "id": "5",
+  "name": "5",
+  "code": "Digit5",
+  "upperKey": "%"
+}, {
+  "id": "6",
+  "name": "6",
+  "code": "Digit6",
+  "upperKey": "^"
+}, {
+  "id": "7",
+  "name": "7",
+  "code": "Digit7",
+  "upperKey": "&"
+}, {
+  "id": "8",
+  "name": "8",
+  "code": "Digit8",
+  "upperKey": "*"
+}, {
+  "id": "9",
+  "name": "9",
+  "code": "Digit9",
+  "upperKey": "("
+}, {
+  "id": "0",
+  "name": "0",
+  "code": "Digit0",
+  "upperKey": ")"
+}, {
+  "id": "-",
+  "name": "-",
+  "code": "Minus",
+  "upperKey": "_"
+}, {
+  "id": "=",
+  "name": "=",
+  "code": "Equal",
+  "upperKey": "+"
+}, {
+  "id": "Backspace",
+  "name": "BACKSPACE",
+  "code": "Backspace"
+}, {
+  "id": "Tab",
+  "name": "TAB",
+  "code": "Tab"
+}, {
+  "id": "q",
+  "name": "Q",
+  "code": "KeyQ"
+}, {
+  "id": "w",
+  "name": "W",
+  "code": "KeyW"
+}, {
+  "id": "e",
+  "name": "E",
+  "code": "KeyE"
+}, {
+  "id": "r",
+  "name": "R",
+  "code": "KeyR"
+}, {
+  "id": "t",
+  "name": "T",
+  "code": "KeyT"
+}, {
+  "id": "y",
+  "name": "Y",
+  "code": "KeyY"
+}, {
+  "id": "u",
+  "name": "U",
+  "code": "KeyU"
+}, {
+  "id": "i",
+  "name": "I",
+  "code": "KeyI"
+}, {
+  "id": "o",
+  "name": "O",
+  "code": "KeyO"
+}, {
+  "id": "p",
+  "name": "P",
+  "code": "KeyP"
+}, {
+  "id": "[",
+  "name": "[",
+  "code": "BracketLeft",
+  "upperKey": "{"
+}, {
+  "id": "]",
+  "name": "]",
+  "code": "BracketRight",
+  "upperKey": "}"
+}, {
+  "id": "\\",
+  "name": "\\",
+  "code": "Backslash",
+  "upperKey": "|"
+}, {
+  "id": "CapsLock",
+  "name": "Caps",
+  "code": "CapsLock"
+}, {
+  "id": "a",
+  "name": "A",
+  "code": "KeyA"
+}, {
+  "id": "s",
+  "name": "S",
+  "code": "KeyS"
+}, {
+  "id": "d",
+  "name": "D",
+  "code": "KeyD"
+}, {
+  "id": "f",
+  "name": "F",
+  "code": "KeyF"
+}, {
+  "id": "g",
+  "name": "G",
+  "code": "KeyG"
+}, {
+  "id": "h",
+  "name": "H",
+  "code": "KeyH"
+}, {
+  "id": "j",
+  "name": "J",
+  "code": "KeyJ"
+}, {
+  "id": "k",
+  "name": "K",
+  "code": "KeyK"
+}, {
+  "id": "l",
+  "name": "L",
+  "code": "KeyL"
+}, {
+  "id": ";",
+  "name": ";",
+  "code": "Semicolon",
+  "upperKey": ":"
+}, {
+  "id": "'",
+  "name": "'",
+  "code": "Quote",
+  "upperKey": "\""
+}, {
+  "id": "Enter",
+  "name": "Enter",
+  "code": "Enter"
+}, {
+  "id": "ShiftLeft",
+  "name": "Shift",
+  "code": "ShiftLeft",
+  "switch": "Shift"
+}, {
+  "id": "z",
+  "name": "Z",
+  "code": "KeyZ"
+}, {
+  "id": "x",
+  "name": "X",
+  "code": "KeyX"
+}, {
+  "id": "c",
+  "name": "C",
+  "code": "KeyC"
+}, {
+  "id": "v",
+  "name": "V",
+  "code": "KeyV"
+}, {
+  "id": "b",
+  "name": "B",
+  "code": "KeyB"
+}, {
+  "id": "n",
+  "name": "N",
+  "code": "KeyN"
+}, {
+  "id": "m",
+  "name": "M",
+  "code": "KeyM"
+}, {
+  "id": ",",
+  "name": ",",
+  "code": "Comma",
+  "upperKey": "<"
+}, {
+  "id": ".",
+  "name": ".",
+  "code": "Period",
+  "upperKey": ">"
+}, {
+  "id": "/",
+  "name": "/",
+  "code": "Slash",
+  "upperKey": "?"
+}, {
+  "id": "ShiftRight",
+  "name": "Shift",
+  "code": "ShiftRight",
+  "switch": "Shift"
+}, {
+  "id": "CtrlLeft",
+  "name": "Ctrl",
+  "code": "ControlLeft",
+  "switch": "Ctrl"
+}, {
+  "id": "Windows",
+  "name": "Windows",
+  "code": "MetaLeft",
+  "switch": "Win"
+}, {
+  "id": "AltLeft",
+  "name": "Alt",
+  "code": "AltLeft",
+  "switch": "Alt"
+}, {
+  "id": "Space",
+  "name": " ",
+  "code": "Space"
+}, {
+  "id": "AltRight",
+  "name": "Alt",
+  "code": "AltRight",
+  "switch": "Alt"
+}, {
+  "id": "Menu",
+  "name": "Menu",
+  "code": "ContextMenu"
+}, {
+  "id": "CtrlRight",
+  "name": "Ctrl",
+  "code": "ControlRight",
+  "switch": "Ctrl"
+}, {
+  "id": "Up",
+  "name": "↑",
+  "code": "ArrowUp"
+}, {
+  "id": "Down",
+  "name": "↓",
+  "code": "ArrowDown"
+}, {
+  "id": "Left",
+  "name": "←",
+  "code": "ArrowLeft"
+}, {
+  "id": "Right",
+  "name": "→",
+  "code": "ArrowRight"
+}, {
+  "id": "PrtSc",
+  "name": "PrtSc",
+  "code": "PrintScreen"
+}, {
+  "id": "ScrollLock",
+  "name": "ScrollLock",
+  "code": "ScrollLock"
+}, {
+  "id": "Pause",
+  "name": "Pause",
+  "code": "Pause"
+}, {
+  "id": "Insert",
+  "name": "Insert",
+  "code": "Insert"
+}, {
+  "id": "Home",
+  "name": "Home",
+  "code": "Home"
+}, {
+  "id": "PgUp",
+  "name": "PgUp",
+  "code": "PageUp"
+}, {
+  "id": "Delete",
+  "name": "Delete",
+  "code": "Delete"
+}, {
+  "id": "End",
+  "name": "End",
+  "code": "End"
+}, {
+  "id": "PgDn",
+  "name": "PgDn",
+  "code": "PageDown"
+}, {
+  "id": "NumPadAdd",
+  "name": "+",
+  "code": "NumpadAdd"
+}, {
+  "id": "NumpadSubtract",
+  "name": "-",
+  "code": "NumpadSubtract"
+}, {
+  "id": "NumPadMultiply",
+  "name": "*",
+  "code": "NumpadMultiply"
+}, {
+  "id": "NumPadDivide",
+  "name": "/",
+  "code": "NumpadDivide"
+}, {
+  "id": "NumPad0",
+  "name": "0",
+  "code": "Numpad0"
+}, {
+  "id": "NumPad1",
+  "name": "1",
+  "code": "Numpad1"
+}, {
+  "id": "NumPad2",
+  "name": "2",
+  "code": "Numpad2"
+}, {
+  "id": "NumPad3",
+  "name": "3",
+  "code": "Numpad3"
+}, {
+  "id": "NumPad4",
+  "name": "4",
+  "code": "Numpad4"
+}, {
+  "id": "NumPad5",
+  "name": "5",
+  "code": "Numpad5"
+}, {
+  "id": "NumPad6",
+  "name": "6",
+  "code": "Numpad6"
+}, {
+  "id": "NumPad7",
+  "name": "7",
+  "code": "Numpad7"
+}, {
+  "id": "NumPad8",
+  "name": "8",
+  "code": "Numpad8"
+}, {
+  "id": "NumPad9",
+  "name": "9",
+  "code": "Numpad9"
+}, {
+  "id": "NumpadDecimal",
+  "name": ".",
+  "code": "NumpadDecimal"
+}, {
+  "id": "NumPadEnter",
+  "name": "Enter",
+  "code": "NumpadEnter"
+}, {
+  "id": "NumsLock",
+  "name": "NumsLock",
+  "code": "NumLock"
+}, {
+  "id": "LeftClick",
+  "name": "LC",
+  "code": "LeftClick",
+  "mouse": true
+}, {
+  "id": "RightClick",
+  "name": "RC",
+  "code": "RightClick",
+  "mouse": true
+}, {
+  "id": "MiddleClick",
+  "name": "MC",
+  "code": "MiddleClick",
+  "mouse": true
+}, {
+  "id": "WheelForward",
+  "name": "WF",
+  "code": "WheelForward",
+  "mouse": true
+}, {
+  "id": "WheelBackward",
+  "name": "WB",
+  "code": "WheelBackward",
+  "mouse": true
+}]

@@ -40,7 +40,7 @@ app.on('ready', function() {
   mainWindow.setMaximizable(false)
   mainWindow.setResizable(false)
   mainWindow.loadURL('file://' + __dirname + '/index.html');
-  // mainWindow.openDevTools({mode: 'detach'});
+  mainWindow.openDevTools({mode: 'detach'});
   mainWindow.setAlwaysOnTop(true);
   mainWindow.on('closed', function() {
     mainWindow = null;

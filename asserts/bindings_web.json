@@ -438,4 +438,29 @@
   "id": "NumsLock",
   "name": "NumsLock",
   "code": "NumLock"
+}, {
+  "id": "LeftClick",
+  "name": "LC",
+  "code": "LeftClick",
+  "mouse": true
+}, {
+  "id": "RightClick",
+  "name": "RC",
+  "code": "RightClick",
+  "mouse": true
+}, {
+  "id": "MiddleClick",
+  "name": "MC",
+  "code": "MiddleClick",
+  "mouse": true
+}, {
+  "id": "WheelForward",
+  "name": "WF",
+  "code": "WheelForward",
+  "mouse": true
+}, {
+  "id": "WheelBackward",
+  "name": "WB",
+  "code": "WheelBackward",
+  "mouse": true
 }]

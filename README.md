@@ -127,13 +127,16 @@ You should describe each key by these arguments:
 
 ```
 {
-  "id": "0",        // The id of the key.
-  "name": "0",      // The name of the key (use as the text on keyboard).
-  "code": 11,       // Key code. Can be an array of key codes. Each code can be a number or a string.
-  "upperKey": ")",  // Upper key name of the key. Can be absent.
-  "switch": "Shift" // Switch name of the key in shortcut. Can be absent.
+  "id": "0",         // The id of the key.
+  "name": "0",       // The name of the key (use as the text on keyboard).
+  "code": 11,        // Key code. Can be an array of key codes. Each code can be a number or a string.
+  "upperKey": ")",   // Upper key name of the key. Can be absent.
+  "switch": "Shift", // Switch name of the key in shortcut. Can be absent.
+  "mouse": true      // If the key is a mouse event key. Can be absent.
 }
 ```
+
+**Mouse events** are added as some key codes. They are: LeftClick, MiddleClick, RightClick, WheelForward and WheelBackward. The direction of wheel events are defined as the movement of your finger.
 
 Notice that each keys can overwrite the bindings of previous keys.
 
