@@ -12,6 +12,8 @@
         "start": "electron .",
         "postinstall": "electron-builder install-app-deps",
         "build": "electron-builder --linux",
+        "build-win": "electron-builder --win",
+        "build-mac": "electron-builder --mac",
         "release": "electron-builder --mac --windows --linux --publish always"
     },
     "build": {
