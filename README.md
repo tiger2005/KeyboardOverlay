@@ -44,7 +44,7 @@ This command will add a folder `/node_modules/iohook/builds`, with pre-build fil
 
 ## Settings
 
-You can change files in `/assert` in order to modify the style of the keyboard.
+You can change files in `/asserts` in order to modify the style of the keyboard.
 
 ### options.json
 
@@ -119,7 +119,7 @@ Example code:
 
 ### bindings.json / bindings_web.json
 
-This is a json file, describing a list of keys and their codes.
+There are two json files, describing a list of keys and their codes.
 
 Notice that the key codes in ioHook are different from them in browsers. For example, the key code of `0` is 11 in ioHook, and 48 in browsers. You can open `debug mode` to get key codes. Also, in order to identify the keys, we use the `code` in web browsers (for example, `Digit0`).
 
