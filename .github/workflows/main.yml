@@ -25,6 +25,9 @@ jobs:
         with:
           node-version: 16
 
+      - name: Rebuild IoHook Library
+        run: cd node_modules/iohook && npm rebuild --runtime=electron --target=12.0.0 --disturl=https://atom.io/download/atom-shell --abi=87 && cd .. && cd ..
+
       - name: Build/release Electron app (Ubuntu)
         if: matrix.os == 'ubuntu-latest'
         uses: samuelmeuli/action-electron-builder@v1

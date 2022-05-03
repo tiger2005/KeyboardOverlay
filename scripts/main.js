@@ -261,17 +261,26 @@ else{
   })
 }
 
-$(".lockerMask > i").click(function() {
+$(".lockerMask i").eq(0).click(function() {
   if(! keyboardLocked) {
     keyboardLocked = true;
-    $(this).parent().removeClass("closed").addClass("open");
+    $(this).parent().css("width", "calc(50% + 20px)");
+    $(".windowCloser").css("transform", "scale(0.0)");
+    $(".lockerMask").removeClass("closed").addClass("open");
     $(".innerContent").addClass("addBlur");
   }
   else {
     keyboardLocked = false;
-    $(this).parent().removeClass("open").addClass("closed");
+    $(this).parent().css("width", "calc(50% + 8px)");
+    $(".windowCloser").css("transform", "scale(1.0)");
+    $(".lockerMask").removeClass("open").addClass("closed");
     $(".innerContent").removeClass("addBlur");
   }
+})
+
+$(".lockerMask i").eq(1).click(function() {
+  if (runInElectron)
+    ipcRenderer.send("window-close");
 })
 
 const setErrorMessage = (x) => {

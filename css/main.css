@@ -158,17 +158,20 @@ body.at_desktop {
   height: 100%;
 }
 
-.lockerMask > i{
+.lockerMask > div > div {
+  transition: 0.2s;
+}
+
+.lockerMask i{
   font-size: 16px;
   color: var(--key-font-color);
   transition: 0.2s;
   cursor: pointer;
   z-index: 10;
-
 }
 
-.lockerMask.open > i {
-  font-size: min(calc(2 * var(--font-size)), 40px);
+.lockerMask.open i {
+  font-size: 40px;
 }
 
 .innerContent {
@@ -176,5 +179,5 @@ body.at_desktop {
 }
 
 .innerContent.addBlur {
-  filter: blur(5px);
+  filter: blur(2px);
 }

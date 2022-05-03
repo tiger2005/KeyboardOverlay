@@ -8,7 +8,7 @@ This is an example keyboard overlay, using map in windows-80.txt, cps mode and s
 
 This project is developed by Electron. It requires ioHook to capture global keyboard events, and FontAwesome v6 for icon library.
 
-~~Thanks @YuzhenQin for adding Github Actions. Now you can straightly download releases from Github.~~ In Progress.
+Thanks @YuzhenQin for adding Github Actions. Now you can straightly download releases from Github.
 
 ## Preview
 
@@ -44,7 +44,7 @@ This command will add a folder `/node_modules/iohook/builds`, with pre-build fil
 
 ## Settings
 
-You can change files in `/asserts` in order to modify the style of the keyboard.
+You can change files in `/asserts` in order to modify the style of the keyboard. **Notice**: if you are using releases, the directory should be in `/resources/app/`.
 
 ### options.json
 
