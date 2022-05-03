@@ -8,7 +8,13 @@ This is an example keyboard overlay, using map in windows-80.txt, cps mode and s
 
 This project is developed by Electron. It requires ioHook to capture global keyboard events, and FontAwesome v6 for icon library.
 
-Thanks @YuzhenQin for adding Github Actions. Now you can straightly download releases from Github.
+~~Thanks @YuzhenQin for adding Github Actions. Now you can straightly download releases from Github.~~ In Progress.
+
+## Preview
+
+You can preview the project on https://tiger2005.github.io/KeyboardOverlay/ .
+
+
 
 ## Usage
 

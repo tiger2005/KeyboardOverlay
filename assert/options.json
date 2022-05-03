@@ -5,7 +5,7 @@
   "toolBarMode": "cps",
   "toolBarFontSize": 14,
   "keyCount": false,
-  "keyHeatmap": "light",
+  "keyHeatmap": "none",
   "keyTotalCountMode": "strict",
   "displayShortcut": true,
   "antiMinimize": false,
