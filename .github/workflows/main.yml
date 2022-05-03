@@ -9,18 +9,6 @@ permissions:
   contents: write
 
 jobs:
-  draft:
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v2
-      - name: Create release draft
-        uses: softprops/action-gh-release@v1
-        with:
-          prerelease: false
-          draft: true
-
   build:
     runs-on: ${{ matrix.os }}
     needs: draft
@@ -69,7 +57,7 @@ jobs:
         with:
           prerelease: false
           draft: true
-          files: build/*
+          files: build/*.tar.gz
 
       - name: Upload release file (Windows)
         if: matrix.os == 'windows-latest'
@@ -77,7 +65,7 @@ jobs:
         with:
           prerelease: false
           draft: true
-          files: build/*
+          files: build/*win.zip
 
       - name: Upload release file (MacOS)
         if: matrix.os == 'macos-latest'
@@ -85,17 +73,4 @@ jobs:
         with:
           prerelease: false
           draft: true
-          files: build/*
-
-  publish:
-    runs-on: ubuntu-latest
-    needs: build
-
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v2
-      - name: Publish release draft
-        uses: softprops/action-gh-release@v1
-        with:
-          prerelease: false
-          draft: false
+          files: build/*mac.tar.gz
