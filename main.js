@@ -33,12 +33,22 @@ app.on('ready', function() {
   mainWindow.loadURL('file://' + __dirname + '/index.html');
   // mainWindow.openDevTools({mode: 'detach'});
   mainWindow.setAlwaysOnTop(true);
+  if(process.platform === "win32")
+    mainWindow .hookWindowMessage(278, function(e) {
+      mainWindow.blur();
+      mainWindow.focus();
+      mainWindow.setEnabled(false);
+      setTimeout(() => {
+        mainWindow.setEnabled(true);
+      }, 100);
+      return true;
+    })
   mainWindow.on('closed', function() {
     mainWindow = null;
   });
   ipcMain.on('window-close', function() {
-      mainWindow.close();
-  })
+    mainWindow.close();
+  });
   mainWindow.on('maximize', function () {
    // mainWindow.webContents.send('main-window-max');
   })

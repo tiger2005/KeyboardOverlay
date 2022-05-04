@@ -75,14 +75,29 @@ This is a json file including all the function switchers and style settings. Key
 | displayShortcut | boolean | Open shortcut key displayer |
 | antiMinimize | boolean | Automately restore while minimizing the keyboard |
 | bounceTime | number | Milliseconds for a key to bounce up |
+| lockShortcut | object | Information of lock shortcut |
 
 Some details below:
 
 **Toolbar mode**: can be "debug mode" (display the key code you pressed), "cps mode" (calculate and display total press count and current cps) and "total mode" (only calculate and display press count).
 
-**Heatmap brightness**: can be a number between -1.0 and 1.0. The closer the number is to -1.0, the lighter the colors will be. `light` and `dark` equals -0.4 and 0.5, respectively.
+**Heatmap brightness**: can be a number between -1.0 and 1.0. The closer the number is to -1.0, the lighter the colors will be. `light` and `dark` are equal to -0.4 and 0.5, respectively.
 
 **Strict count mode**: a mode that only the keys on the keyboard will be calculated into press count and cps. In this mode, `TOTAL` will change to `S-TOTAL`.
+
+**Key shortcut**: you should use following arguments to initialize the shortcut:
+
+```json
+{
+  "id": "L",        // The ID of the key
+  "shiftKey": true, // If Shift is needed to press
+  "ctrlKey": true,  // If Ctrl is needed to press
+  "altKey": false,  // If Alt is needed to press
+  "metaKey": false  // If Meta is needed to press
+}
+```
+
+The example above means `Ctrl + Shift + L`. If you use shortcut to lock / unlock the keyboard, you will receive a system message.
 
 If you use default settings, you can get a light keyboard with no functions. Here is a color scheme for a dark keyboard:
 

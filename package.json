@@ -1,6 +1,6 @@
 {
     "name": "Keyboard_Overlay",
-    "version": "0.1.1",
+    "version": "0.1.2",
     "main": "main.js",
     "dependencies": {
         "app": "^0.1.0",
@@ -15,7 +15,7 @@
     },
     "build": {
         "productName":"Keyboard_Overlay",
-        "appId": "Keyboard_Overlay", 
+        "appId": "com.keyboard.overlay.app", 
         "copyright":"MIT",
         "directories": {
           "output": "build"

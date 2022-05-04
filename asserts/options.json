@@ -1,5 +1,5 @@
 {
-  "fontSize": 14,
+  "fontSize": 16,
   "fontFamily": "Config, Monaco, Menlo, \"Ubuntu Mono\", Consolas, source-code-pro, monospace",
   "alwaysOnTop": true,
   "toolBarMode": "cps",
@@ -7,7 +7,14 @@
   "keyCount": false,
   "keyHeatmap": "none",
   "keyTotalCountMode": "strict",
-  "displayShortcut": true,
+  "displayShortcut": false,
   "antiMinimize": false,
-  "bounceTime": 200
+  "bounceTime": 200,
+  "lockShortcut": {
+    "id": "L",
+    "shiftKey": true,
+    "ctrlKey": true,
+    "altKey": false,
+    "metaKey": false
+  }
 }

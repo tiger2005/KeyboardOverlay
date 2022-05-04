@@ -71,6 +71,10 @@ body {
   display: inline-block;
 }
 
+.innerContent {
+  border-radius: 3px;
+}
+
 body > div > div{
   -webkit-app-region: drag;
 }

@@ -75,7 +75,8 @@ npm rebuild --runtime=electron --target=12.0.0 --disturl=https://atom.io/downloa
 |     displayShortcut      |               boolean               |           打开快捷键显示           |
 |       antiMinimize       |               boolean               |       在尝试最小化时自动复原       |
 |        bounceTime        |               number                |        一个按键弹起的毫秒数        |
-
+|       lockShortcut       |               object                |          锁定的快捷键信息        |
+ 
 一些细节如下：
 
 **工具栏模式**：可以是“调试模式”（显示当前按键的键值）、“CPS 模式”（显示目前按下的按键次数和 CPS）和“仅统计模式”（只统计按键次数）。
@@ -83,6 +84,20 @@ npm rebuild --runtime=electron --target=12.0.0 --disturl=https://atom.io/downloa
 **热力图明亮度**：可以是一个在 -1.0 和 1.0 之间的数字。数字越接近 -1.0，热力图就越量亮。`light` 和 `dark` 分别等于 -0.4 和 0.5。
 
 **严格统计模式**：在模式下，只有在显示的按键范围中的字符会计入按键次数和 CPS。在这个模式下，`TOTAL` 将会换为 `S-TOTAL`。
+
+**锁定快捷键**：你需要使用以下参数配置快捷键：
+
+```json
+{
+  "id": "L",        // 需要按下的按键对应的 ID
+  "shiftKey": true, // 是否按下 Shift
+  "ctrlKey": true,  // 是否按下 Ctrl
+  "altKey": false,  // 是否按下 Alt
+  "metaKey": false  // 是否按下 Meta
+}
+```
+
+上述例子表示的快捷键即为 `Ctrl + Shift + L`。在使用快捷键锁定或者解锁键盘的时候将会收到系统通知。
 
 如果你使用默认设置，你将会得到一个亮色、无功能键盘。以下是暗色的配色方案：
 
