@@ -352,9 +352,6 @@ const refreshOverallInfo = () => {
     }
   });
 
-  if(displayShortcut)
-    $(".shortcutKeyContainer").css("display", "block");
-
   if(errorMessage)
     return;
 
@@ -558,9 +555,10 @@ const refreshOverallInfo = () => {
         if(keyHeatmap !== "none")
           $(this).css("background", getColorFromPercent(0, keyHeatmap));
       });
-      if(runInElectron){
-          win.setSize(Math.ceil($(".innerContent").outerWidth()), Math.ceil($(".innerContent").outerHeight()));
-      }
+      if(displayShortcut)
+        $(".shortcutKeyContainer").css("display", "block");
+      if(runInElectron)
+        win.setSize(Math.ceil($(".innerContent").outerWidth()), Math.ceil($(".innerContent").outerHeight()));
     },
     error: function(){
       setErrorMessage("Cannot load map file.");
