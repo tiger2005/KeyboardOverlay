@@ -46,7 +46,7 @@ npm rebuild --runtime=electron --target=12.0.0 --disturl=https://atom.io/downloa
 - 你可以任意更换键位布局。
 - 键盘在非最小化的情况将会一直渲染，因此你可以用在类似于 OBS Studio 的录制软件上。
 - 你可以将鼠标放在键盘下方，并点击浮起的锁定按钮锁定键盘。键盘在此起降将会保持锁定，直到你再次点击锁定按钮解除锁定。
-![W5W_WN_QH494_A_R`RF@_8Y.png](https://s2.loli.net/2022/05/02/oCxGhit7DIVSNPu.png)
+  ![W5W_WN_QH494_A_R`RF@_8Y.png](https://s2.loli.net/2022/05/02/oCxGhit7DIVSNPu.png)
 
 ## 设置
 
@@ -56,25 +56,25 @@ npm rebuild --runtime=electron --target=12.0.0 --disturl=https://atom.io/downloa
 
 这是一个 JSON 文件，包含了所有的功能开关和样式设置：以下为键值和内容：
 
-| 键值 | 类型 | 内容 |
-| :-: | :-: | :-: | 
-| backgroundColor | string | 背景颜色 |
-| keyBackgroundColor | string | 按键颜色（会被热力图覆盖） |
-| keyFontColor | string | 按键字体颜色 |
-| keyShadowColor | string | 按键侧面颜色 |
-| keyActiveBackgroundColor | string | 按键按下后的颜色（会被热力图覆盖） |
-| keyActiveFontColor | string | T按键按下后的字体颜色 |
-| fontSize | number | 默认字体大小 |
-| fontFamily | string | 所有文字的字体 |
-| alwaysOnTop | boolean | 选择是否置顶键盘 |
-| toolBarMode | "none", "debug", "cps" or "tot" | 打开调试、CPS 和仅统计模式 |
-| toolBarFontSize | number | 工具栏字体大小 |
-| keyCount | boolean | 显示每个按键的点击次数 |
-| keyHeatmap | "none", "light", "dark" or a number | 打开热力图并且设置明亮度 |
-| keyTotalCountMode | "normal" or "strict" | 打开严格统计模式 |
-| displayShortcut | boolean | 打开快捷键显示 |
-| antiMinimize | boolean | 在尝试最小化时自动复原 |
-| bounceTime | number | 一个按键弹起的毫秒数 |
+|           键值           |                类型                 |                内容                |
+| :----------------------: | :---------------------------------: | :--------------------------------: |
+|     backgroundColor      |               string                |              背景颜色              |
+|    keyBackgroundColor    |               string                |     按键颜色（会被热力图覆盖）     |
+|       keyFontColor       |               string                |            按键字体颜色            |
+|      keyShadowColor      |               string                |            按键侧面颜色            |
+| keyActiveBackgroundColor |               string                | 按键按下后的颜色（会被热力图覆盖） |
+|    keyActiveFontColor    |               string                |       T按键按下后的字体颜色        |
+|         fontSize         |               number                |            默认字体大小            |
+|        fontFamily        |               string                |           所有文字的字体           |
+|       alwaysOnTop        |               boolean               |          选择是否置顶键盘          |
+|       toolBarMode        |   "none", "debug", "cps" or "tot"   |     打开调试、CPS 和仅统计模式     |
+|     toolBarFontSize      |               number                |           工具栏字体大小           |
+|         keyCount         |               boolean               |       显示每个按键的点击次数       |
+|        keyHeatmap        | "none", "light", "dark" or a number |      打开热力图并且设置明亮度      |
+|    keyTotalCountMode     |        "normal" or "strict"         |          打开严格统计模式          |
+|     displayShortcut      |               boolean               |           打开快捷键显示           |
+|       antiMinimize       |               boolean               |       在尝试最小化时自动复原       |
+|        bounceTime        |               number                |        一个按键弹起的毫秒数        |
 
 Some details below:
 
@@ -157,13 +157,13 @@ Some details below:
 这是一个描述键位布局的文件。你需要使用一个轻量语言米描述它们。
 我们定义每个按键和空白的 `default_size` 为 `2 * default_font_size`.
 
-| 命令 | 含义 |
-| :-: | :-: |
-| `<Row>...</Row>` | 将元素排列在一行内 |
-| `<Column>...</Column>` | 将元素排列在一列内 |
-| `<Blanks> width height` | 一个空元素，大小为 `(default_size * width)px x (default_size * height)px`。参数可以省略，此时默认为 1 |
+|                  命令                  |                             含义                             |
+| :------------------------------------: | :----------------------------------------------------------: |
+|            `<Row>...</Row>`            |                      将元素排列在一行内                      |
+|         `<Column>...</Column>`         |                      将元素排列在一列内                      |
+|        `<Blanks> width height`         | 一个空元素，大小为 `(default_size * width)px x (default_size * height)px`。参数可以省略，此时默认为 1 |
 | `<Button> keyId width height fontSize` | 一个键 ID 为 keyId 的按钮，大小为`(default_size * width)px x (default_size * height)px`，字体大小为 `fontSize * default_font_size`。参数 `width, height, fontSize` 可以省略，此时默认为 1 |
-| `<Icon> keyId width height fontSize` | 和 `<Button>` 一样，但是使用图标作为按键文字 |
+|  `<Icon> keyId width height fontSize`  |         和 `<Button>` 一样，但是使用图标作为按键文字         |
 
 比如说，你可以使用以下代码快速生成一个 9K 键盘：
 
@@ -193,17 +193,17 @@ Some details below:
 
 以下是 `/examples` 文件夹下的模板：
 
-| 名字 | 预览 |
-| :-: | :-: |
-| arrows.txt | ![6_D_7S9SIR`M~I@RWC_GPDV.png](https://s2.loli.net/2022/05/04/XZDnL2zEOWA5P8j.png) |
-| wasd-extended.txt | ![JN_E_KG4___O7N5YPHHFO~W.png](https://s2.loli.net/2022/05/04/RdztAfsljZUx8Ir.png) |
-| wasd-extended-numeric.txt | ![VMHX`2LJ4_YVTP9AD_CY2_I.png](https://s2.loli.net/2022/05/04/rAfk46gDEJ2wFsS.png) |
+|               名字               |                             预览                             |
+| :------------------------------: | :----------------------------------------------------------: |
+|            arrows.txt            | ![6_D_7S9SIR`M~I@RWC_GPDV.png](https://s2.loli.net/2022/05/04/XZDnL2zEOWA5P8j.png) |
+|        wasd-extended.txt         | ![GXY7R_N_A2TDR_2H_JN~_I.png](https://s2.loli.net/2022/05/04/R2XNOKopt4mrjC9.png) |
+|    wasd-extended-numeric.txt     | ![VMHX`2LJ4_YVTP9AD_CY2_I.png](https://s2.loli.net/2022/05/04/rAfk46gDEJ2wFsS.png) |
 | wasd-extended-numeric-square.txt | ![C_X8WLRHBC__WJ~SJVR~HFR.png](https://s2.loli.net/2022/05/04/M6iOG4qmkojeBsV.png) |
-| wasd-full.txt | ![XQOS2NWY_RSH_RL@KXCM_JW.png](https://s2.loli.net/2022/05/04/wSMumBniU7OC9bJ.png) |
-| wasd-minimal.txt | ![GXY7R_N_A2TDR_2H_JN~_I.png](https://s2.loli.net/2022/05/04/R2XNOKopt4mrjC9.png) |
-| windows-60.txt | ![R40NH~D90_AUMQAVKM_Z7_V.png](https://s2.loli.net/2022/05/04/6mXov5KRxyMVu93.png) |
-| windows-80.txt | ![J_CX_VX~UU_LBYT_@_BB0VS.png](https://s2.loli.net/2022/05/04/AOJlzbTV4MxPk7Q.png) |
-| yghj-minimal.txt | ![0I_8BEI@Y9KB7A_RQA`FHH8.png](https://s2.loli.net/2022/05/04/5iVzP4w8cHKlMTY.png) |
+|          wasd-full.txt           | ![JN_E_KG4___O7N5YPHHFO~W.png](https://s2.loli.net/2022/05/04/RdztAfsljZUx8Ir.png) |
+|         wasd-minimal.txt         | ![XQOS2NWY_RSH_RL@KXCM_JW.png](https://s2.loli.net/2022/05/04/wSMumBniU7OC9bJ.png) |
+|          windows-60.txt          | ![J_CX_VX~UU_LBYT_@_BB0VS.png](https://s2.loli.net/2022/05/04/AOJlzbTV4MxPk7Q.png) |
+|          windows-80.txt          | ![R40NH~D90_AUMQAVKM_Z7_V.png](https://s2.loli.net/2022/05/04/6mXov5KRxyMVu93.png) |
+|         yghj-minimal.txt         | ![0I_8BEI@Y9KB7A_RQA`FHH8.png](https://s2.loli.net/2022/05/04/5iVzP4w8cHKlMTY.png) |
 
 ---
 
