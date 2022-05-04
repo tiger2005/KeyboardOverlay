@@ -196,11 +196,11 @@ Some details below:
 | 名字 | 预览 |
 | :-: | :-: |
 | arrows.txt | ![6_D_7S9SIR`M~I@RWC_GPDV.png](https://s2.loli.net/2022/05/04/XZDnL2zEOWA5P8j.png) |
-| wasd-extended.txt | ![GXY7R_N_A2TDR_2H_JN~_I.png](https://s2.loli.net/2022/05/04/R2XNOKopt4mrjC9.png) |
-| wasd-extended-numeric.txt | ![XQOS2NWY_RSH_RL@KXCM_JW.png](https://s2.loli.net/2022/05/04/wSMumBniU7OC9bJ.png) |
-| wasd-extended-numeric-square.txt | ![JN_E_KG4___O7N5YPHHFO~W.png](https://s2.loli.net/2022/05/04/RdztAfsljZUx8Ir.png) |
-| wasd-full.txt | ![VMHX`2LJ4_YVTP9AD_CY2_I.png](https://s2.loli.net/2022/05/04/rAfk46gDEJ2wFsS.png) |
-| wasd-minimal.txt | ![C_X8WLRHBC__WJ~SJVR~HFR.png](https://s2.loli.net/2022/05/04/M6iOG4qmkojeBsV.png) |
+| wasd-extended.txt | ![JN_E_KG4___O7N5YPHHFO~W.png](https://s2.loli.net/2022/05/04/RdztAfsljZUx8Ir.png) |
+| wasd-extended-numeric.txt | ![VMHX`2LJ4_YVTP9AD_CY2_I.png](https://s2.loli.net/2022/05/04/rAfk46gDEJ2wFsS.png) |
+| wasd-extended-numeric-square.txt | ![C_X8WLRHBC__WJ~SJVR~HFR.png](https://s2.loli.net/2022/05/04/M6iOG4qmkojeBsV.png) |
+| wasd-full.txt | ![XQOS2NWY_RSH_RL@KXCM_JW.png](https://s2.loli.net/2022/05/04/wSMumBniU7OC9bJ.png) |
+| wasd-minimal.txt | ![GXY7R_N_A2TDR_2H_JN~_I.png](https://s2.loli.net/2022/05/04/R2XNOKopt4mrjC9.png) |
 | windows-60.txt | ![R40NH~D90_AUMQAVKM_Z7_V.png](https://s2.loli.net/2022/05/04/6mXov5KRxyMVu93.png) |
 | windows-80.txt | ![J_CX_VX~UU_LBYT_@_BB0VS.png](https://s2.loli.net/2022/05/04/AOJlzbTV4MxPk7Q.png) |
 | yghj-minimal.txt | ![0I_8BEI@Y9KB7A_RQA`FHH8.png](https://s2.loli.net/2022/05/04/5iVzP4w8cHKlMTY.png) |
