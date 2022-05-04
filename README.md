@@ -2,11 +2,13 @@
 
 A highly customizable keyboard displayer, including shortcut keys, key count, cps display and so on.
 
+[中文介绍](https://github.com/tiger2005/KeyboardOverlay/blob/main/README-zh_cn.md)
+
 ![RP53DLI5_NW`W21O4VM_PT6.png](https://s2.loli.net/2022/05/02/mldJFwyZ9aDzGCn.png)
 
 This is an example keyboard overlay, using map in windows-80.txt, cps mode and shortcut key display. The font family is "Config".
 
-This project is developed by Electron. It requires ioHook to capture global keyboard events, and FontAwesome v6 for icon library.
+This project is developed by Electron. It requires ioHook to capture global keyboard & mouse events, and FontAwesome v6 for icon library.
 
 Thanks @YuzhenQin for adding Github Actions. Now you can straightly download releases from Github.
 
@@ -14,11 +16,15 @@ Thanks @YuzhenQin for adding Github Actions. Now you can straightly download rel
 
 You can preview the project on https://tiger2005.github.io/KeyboardOverlay/ .
 
+If you've downloaded the source code of the project, you can preview the keyboard **without installing the project**. We added web browser support for Keyboard Overlay, and you can open a Live Server or upload onto your server.
 
+If you've downloaded the release, the source code directory is `/resources/app/`, and you can do the same thing as above.
 
 ## Usage
 
-1. Download this project to your computer.
+You can straightly download zip file from Github releases, unzip on your computer and open the executive file at the root of the zip file. Here's the way to run by source code:
+
+1. Download the source code of this project to your computer.
 
 2. At the root of the project, run `npm install` to install all the modules required.
 
@@ -30,7 +36,7 @@ npm rebuild --runtime=electron --target=12.0.0 --disturl=https://atom.io/downloa
 
 This command will add a folder `/node_modules/iohook/builds`, with pre-build files of iohook in it.
 
-4. Go back to the root of the project, and run `npm run start` to start Keyboard Monitor.
+4. Go back to the root of the project, and run `npm run start` to start Keyboard Overlay.
 
 ## Features
 
@@ -64,7 +70,7 @@ This is a json file including all the function switchers and style settings. Key
 | toolBarMode | "none", "debug", "cps" or "tot" | Open debug mode, cps mode or total-only mode |
 | toolBarFontSize | number | Font size for toolbar |
 | keyCount | boolean | Display press count of each key |
-| keyHeatmap | "none", "lignt", "dark" or a number | Open heatmap and set brightness |
+| keyHeatmap | "none", "light", "dark" or a number | Open heatmap and set brightness |
 | keyTotalCountMode | "normal" or "strict" | Open strict count mode |
 | displayShortcut | boolean | Open shortcut key displayer |
 | antiMinimize | boolean | Automately restore while minimizing the keyboard |
@@ -140,9 +146,9 @@ You should describe each key by these arguments:
 
 Notice that each keys can overwrite the bindings of previous keys.
 
-The default key binding set is for Windows. If you are MacOS or Linux user, please make a key binding list in `debug mode`, save in `/example` folder and set up a Pull Request.
+The default key binding set is for Windows. If you are MacOS or Linux user, please make a key binding list in `debug mode`, save in `/examples` folder and set up a Pull Request.
 
-You can preview the styles of keyboard by Live Server. In this time, we will use bindings_web.json as key binding file. I provide all the key bindings I can find on Windows, so if you are Linux or MacOS user and want to extend the list, please let me know.
+You can preview the styles of keyboard by Live Server. In this time, we will use bindings_web.json as key binding file. We provide all the key bindings We can find on Windows, so if you are Linux or MacOS user and want to extend the list, please let us know.
 
 ---
 
@@ -186,10 +192,24 @@ For example, you can quickly generate a 9-key keyboard by this code:
 
 In `/examples` folder, there are some templates of maps. You can make your own map file with the rules above. If you thought that your map file is practical, you can open an Issue and provide it.
 
+Here are the examples from `/examples` folder:
+
+| Name | Preview |
+| :-: | :-: |
+| arrows.txt | ![6_D_7S9SIR`M~I@RWC_GPDV.png](https://s2.loli.net/2022/05/04/XZDnL2zEOWA5P8j.png) |
+| wasd-extended.txt | ![GXY7R_N_A2TDR_2H_JN~_I.png](https://s2.loli.net/2022/05/04/R2XNOKopt4mrjC9.png) |
+| wasd-extended-numeric.txt | ![XQOS2NWY_RSH_RL@KXCM_JW.png](https://s2.loli.net/2022/05/04/wSMumBniU7OC9bJ.png) |
+| wasd-extended-numeric-square.txt | ![JN_E_KG4___O7N5YPHHFO~W.png](https://s2.loli.net/2022/05/04/RdztAfsljZUx8Ir.png) |
+| wasd-full.txt | ![VMHX`2LJ4_YVTP9AD_CY2_I.png](https://s2.loli.net/2022/05/04/rAfk46gDEJ2wFsS.png) |
+| wasd-minimal.txt | ![C_X8WLRHBC__WJ~SJVR~HFR.png](https://s2.loli.net/2022/05/04/M6iOG4qmkojeBsV.png) |
+| windows-60.txt | ![R40NH~D90_AUMQAVKM_Z7_V.png](https://s2.loli.net/2022/05/04/6mXov5KRxyMVu93.png) |
+| windows-80.txt | ![J_CX_VX~UU_LBYT_@_BB0VS.png](https://s2.loli.net/2022/05/04/AOJlzbTV4MxPk7Q.png) |
+| yghj-minimal.txt | ![0I_8BEI@Y9KB7A_RQA`FHH8.png](https://s2.loli.net/2022/05/04/5iVzP4w8cHKlMTY.png) |
+
 ---
 
 ## Contribution
 
-If you find any bug or want to make a feature request, open a Issue to tell me.
+If you find any bug or want to make a feature request, open an Issue to tell us.
 
-If you want to submit your map file or key binding file, open a Pull Request.
+If you want to submit your map file or key binding file, open an Issue or Pull Request and provide them.

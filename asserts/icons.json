@@ -9,5 +9,6 @@
   "Home": "<i class='fas fa-turn-up'></i>",
   "End": "<i class='fas fa-turn-down'></i>",
   "PgUp": "<i class='fas fa-angle-up'></i>",
-  "PgDn": "<i class='fas fa-angle-down'></i>"
+  "PgDn": "<i class='fas fa-angle-down'></i>",
+  "ShiftLeft": "<i class='fas fa-circle-up'></i>"
 }

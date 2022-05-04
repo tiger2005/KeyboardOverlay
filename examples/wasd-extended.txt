@@ -1,0 +1,30 @@
+<Column>
+  <Row>
+    <Button> Tab 1 2 0.7
+    <Column>
+      <Row>
+        <Button> Q
+        <Button> W
+        <Button> E
+        <Button> R
+      </Row>
+      <Row>
+        <Button> A
+        <Button> S
+        <Button> D
+        <Button> F
+      </Row>
+    </Column>
+  </Row>
+  <Row>
+    <Icon> ShiftLeft
+    <Button> Z
+    <Button> X
+    <Button> C
+    <Button> V
+  </Row>
+  <Row>
+    <Button> CtrlLeft 2
+    <Button> Space 3
+  </Row>
+</Column>
