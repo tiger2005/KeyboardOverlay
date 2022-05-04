@@ -27,15 +27,6 @@ app.on('ready', function() {
       enableRemoteModule: true
     }
   });
-  mainWindow .hookWindowMessage(278, function(e) {
-    mainWindow.blur();
-    mainWindow.focus();
-    mainWindow.setEnabled(false);
-    setTimeout(() => {
-      mainWindow.setEnabled(true);
-    }, 100);
-    return true;
-  })
   mainWindow.setMenu(null)
   mainWindow.setMaximizable(false)
   mainWindow.setResizable(false)
