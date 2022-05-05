@@ -76,6 +76,7 @@ npm rebuild --runtime=electron --target=12.0.0 --disturl=https://atom.io/downloa
 |       antiMinimize       |               boolean               |       在尝试最小化时自动复原       |
 |        bounceTime        |               number                |        一个按键弹起的毫秒数        |
 |       lockShortcut       |               object                |          锁定的快捷键信息        |
+|      cleanShortcut       |               object                |          清空的快捷键信息        |
  
 一些细节如下：
 
@@ -98,6 +99,8 @@ npm rebuild --runtime=electron --target=12.0.0 --disturl=https://atom.io/downloa
 ```
 
 上述例子表示的快捷键即为 `Ctrl + Shift + L`。在使用快捷键锁定或者解锁键盘的时候将会收到系统通知。
+
+**清空快捷键**：设置方法和锁定快捷键一样。在清空键盘后，所有的按键点击次数（包括热力图和总数）将会清零。
 
 如果你使用默认设置，你将会得到一个亮色、无功能键盘。以下是暗色的配色方案：
 

@@ -24,6 +24,8 @@
 
   let useLockShortcut = false;
   let lockShortcutInfo = {};
+  let useCleanShortcut = false;
+  let cleanShortcutInfo = {};
 
   const keyIdMask = (x) => {
     if(keyMaskList[x] !== undefined)
@@ -129,6 +131,21 @@
     }
   }
 
+  const cleanKeyboard = () => {
+    for(var i in keyCounter)
+      if(keyCounter.hasOwnProperty(i))
+        keyCounter[i] = 0;
+    currMaximum = 0;
+    if(keyHeatmap !== "none")
+      $(`.buttonDiv`).each(function(){
+          $(this).css("background", getColorFromPercent(0, keyHeatmap));
+      });
+    if(keyCount)
+      $(`.buttonDiv > .counter`).each(function(){
+          $(this).html(0);
+      });
+  }
+
   let hitMatrix = {};
   let hitTotal = 0;
   let cpsCount = 0;
@@ -156,6 +173,24 @@
         usage &= (p === lockShortcutInfo.id.toUpperCase());
         if(usage)
           unlockKeyboard(false);
+      }
+      if(useCleanShortcut) {
+         var usage = true;
+        if(typeof e === "string"){
+          usage &= (false === cleanShortcutInfo.shiftKey);
+          usage &= (false === cleanShortcutInfo.altKey);
+          usage &= (false === cleanShortcutInfo.ctrlKey);
+          usage &= (false === cleanShortcutInfo.metaKey);
+        }
+        else{
+          usage &= (e.shiftKey === cleanShortcutInfo.shiftKey);
+          usage &= (e.altKey === cleanShortcutInfo.altKey);
+          usage &= (e.ctrlKey === cleanShortcutInfo.ctrlKey);
+          usage &= (e.metaKey === cleanShortcutInfo.metaKey);
+        }
+        usage &= (p === cleanShortcutInfo.id.toUpperCase());
+        if(usage)
+          cleanKeyboard();
       }
       return;
     }
@@ -242,6 +277,24 @@
       usage &= (p === lockShortcutInfo.id.toUpperCase());
       if(usage)
         lockKeyboard(false);
+    }
+    if(useCleanShortcut) {
+      var usage = true;
+      if(typeof e === "string"){
+        usage &= (false === cleanShortcutInfo.shiftKey);
+        usage &= (false === cleanShortcutInfo.altKey);
+        usage &= (false === cleanShortcutInfo.ctrlKey);
+        usage &= (false === cleanShortcutInfo.metaKey);
+      }
+      else{
+        usage &= (e.shiftKey === cleanShortcutInfo.shiftKey);
+        usage &= (e.altKey === cleanShortcutInfo.altKey);
+        usage &= (e.ctrlKey === cleanShortcutInfo.ctrlKey);
+        usage &= (e.metaKey === cleanShortcutInfo.metaKey);
+      }
+      usage &= (p === cleanShortcutInfo.id.toUpperCase());
+      if(usage)
+        cleanKeyboard();
     }
   };
   const keyupEvent = (e, wheel) => {
@@ -454,6 +507,19 @@
           }
           useLockShortcut = true;
           lockShortcutInfo = data.lockShortcut;
+        }
+        if(typeof data.cleanShortcut === "object" && !data.cleanShortcut.hasOwnProperty("length")){
+          if(typeof data.cleanShortcut.id !== "string"
+          || typeof data.cleanShortcut.shiftKey !== "boolean"
+          || typeof data.cleanShortcut.ctrlKey !== "boolean"
+          || typeof data.cleanShortcut.altKey !== "boolean"
+          || typeof data.cleanShortcut.metaKey !== "boolean"
+          ){
+            setErrorMessage("Clean shortcut options not correct.");
+            return;
+          }
+          useCleanShortcut = true;
+          cleanShortcutInfo = data.cleanShortcut;
         }
       },
       error: function(){

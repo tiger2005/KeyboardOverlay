@@ -76,6 +76,7 @@ This is a json file including all the function switchers and style settings. Key
 | antiMinimize | boolean | Automately restore while minimizing the keyboard |
 | bounceTime | number | Milliseconds for a key to bounce up |
 | lockShortcut | object | Information of lock shortcut |
+| cleanShortcut | object | Information of clean shortcut |
 
 Some details below:
 
@@ -98,6 +99,8 @@ Some details below:
 ```
 
 The example above means `Ctrl + Shift + L`. If you use shortcut to lock / unlock the keyboard, you will receive a system message.
+
+**Clean shortcut**: the setting types are the same as key shortcut. after cleaning the keyboard, all the key count (so as the key heatmap and total count) will be set as zero.
 
 If you use default settings, you can get a light keyboard with no functions. Here is a color scheme for a dark keyboard:
 
