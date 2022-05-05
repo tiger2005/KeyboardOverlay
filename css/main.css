@@ -33,7 +33,7 @@
   min-width: 0.5em;
 }
 
-.buttonDiv {
+.buttonDiv, .buttonCountDiv {
   display: flex;
   flex-direction: column;
   background: var(--key-background-color);
@@ -184,4 +184,16 @@ body.at_desktop {
 
 .innerContent.addBlur {
   filter: blur(2px);
+}
+
+.keyBg {
+  position: absolute;
+  top: calc(50% + 2px);
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: red;
+  z-index: -1;
+  color: inherit;
+  font-size: 1.1em;
+  opacity: 0.3;
 }

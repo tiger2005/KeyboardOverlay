@@ -1,12 +1,12 @@
 # KeyboardOverlay
 
-高自定义度的键盘显示器，支持显示快捷键、独立按键次数统计、CPS 等。
+高自定义度的键盘显示器，支持显示快捷键、独立按键次数统计、KPS 等。
 
 [English Description](https://github.com/tiger2005/KeyboardOverlay/blob/main/README.md)
 
 ![RP53DLI5_NW`W21O4VM_PT6.png](https://s2.loli.net/2022/05/02/mldJFwyZ9aDzGCn.png)
 
-这是一份示例。其中使用了 `windows-80.txt` 内部的键盘布局，开启了 CPS 模式和快捷键显示。使用 "Config" 作为字体。
+这是一份示例。其中使用了 `windows-80.txt` 内部的键盘布局，开启了 KPS 模式和快捷键显示。使用 "Config" 作为字体。
 
 这是一个基于 Electron 开发的软件。其依赖于 ioHook 以捕获全局键盘和鼠标事件，和 FontAwesome v6 以提供图标库。
 
@@ -41,7 +41,7 @@ npm rebuild --runtime=electron --target=12.0.0 --disturl=https://atom.io/downloa
 ## 特性
 
 - 你可以更改所有的颜色、大小和字体。
-- 这个项目支持很多的功能，包括独立按键数量、热力图、CPS 显示和快捷键显示等。
+- 这个项目支持很多的功能，包括独立按键数量、热力图、KPS 显示和快捷键显示等。
 - 这个项目是全平台通用的，你只需要更换键位配置。
 - 你可以任意更换键位布局。
 - 键盘在非最小化的情况将会一直渲染，因此你可以用在类似于 OBS Studio 的录制软件上。
@@ -67,7 +67,7 @@ npm rebuild --runtime=electron --target=12.0.0 --disturl=https://atom.io/downloa
 |         fontSize         |               number                |            默认字体大小            |
 |        fontFamily        |               string                |           所有文字的字体           |
 |       alwaysOnTop        |               boolean               |          选择是否置顶键盘          |
-|       toolBarMode        |   "none", "debug", "cps" or "tot"   |     打开调试、CPS 和仅统计模式     |
+|       toolBarMode        |   "none", "debug", "kps" or "tot"   |     打开调试、KPS 和仅统计模式     |
 |     toolBarFontSize      |               number                |           工具栏字体大小           |
 |         keyCount         |               boolean               |       显示每个按键的点击次数       |
 |        keyHeatmap        | "none", "light", "dark" or a number |      打开热力图并且设置明亮度      |
@@ -79,15 +79,15 @@ npm rebuild --runtime=electron --target=12.0.0 --disturl=https://atom.io/downloa
  
 一些细节如下：
 
-**工具栏模式**：可以是“调试模式”（显示当前按键的键值）、“CPS 模式”（显示目前按下的按键次数和 CPS）和“仅统计模式”（只统计按键次数）。
+**工具栏模式**：可以是“调试模式”（显示当前按键的键值）、“KPS 模式”（显示目前按下的按键次数和 KPS）和“仅统计模式”（只统计按键次数）。
 
 **热力图明亮度**：可以是一个在 -1.0 和 1.0 之间的数字。数字越接近 -1.0，热力图就越量亮。`light` 和 `dark` 分别等于 -0.4 和 0.5。
 
-**严格统计模式**：在模式下，只有在显示的按键范围中的字符会计入按键次数和 CPS。在这个模式下，`TOTAL` 将会换为 `S-TOTAL`。
+**严格统计模式**：在模式下，只有在显示的按键范围中的字符会计入按键次数和 KPS。在这个模式下，`TOTAL` 将会换为 `S-TOTAL`。
 
 **锁定快捷键**：你需要使用以下参数配置快捷键：
 
-```json
+```
 {
   "id": "L",        // 需要按下的按键对应的 ID
   "shiftKey": true, // 是否按下 Shift
@@ -176,11 +176,13 @@ npm rebuild --runtime=electron --target=12.0.0 --disturl=https://atom.io/downloa
 | :------------------------------------: | :----------------------------------------------------------: |
 |            `<Row>...</Row>`            |                      将元素排列在一行内                      |
 |         `<Column>...</Column>`         |                      将元素排列在一列内                      |
-|        `<Blanks> width height`         | 一个空元素，大小为 `(default_size * width)px x (default_size * height)px`。参数可以省略，此时默认为 1 |
+|        `<Blank> width height`          | 一个空元素，大小为 `(default_size * width)px x (default_size * height)px`。参数可以省略，此时默认为 1 |
 | `<Button> keyId width height fontSize` | 一个键 ID 为 keyId 的按钮，大小为`(default_size * width)px x (default_size * height)px`，字体大小为 `fontSize * default_font_size`。参数 `width, height, fontSize` 可以省略，此时默认为 1 |
 |  `<Icon> keyId width height fontSize`  |         和 `<Button>` 一样，但是使用图标作为按键文字         |
+|    `<Kps> width height fontSize`       | 一个 KPS 显示块，大小为 `(default_size * width)px x (default_size * height)px`，字体大小为 `fontSize * default_font_size`。参数可以省略，此时默认为 1 |
+|   `<Total> width height fontSize`      | 一个点击总数显示块，大小为 `(default_size * width)px x (default_size * height)px`，字体大小为 `fontSize * default_font_size`。参数可以省略，此时默认为 1 |
 
-比如说，你可以使用以下代码快速生成一个 9K 键盘：
+比如说，你可以使用以下代码快速生成一个 9K 带键盘信息显示的键盘：
 
 ```
 <Column>
@@ -195,14 +197,14 @@ npm rebuild --runtime=electron --target=12.0.0 --disturl=https://atom.io/downloa
     <Button> ; 1 1.5
   </Row>
   <Row>
-    <Blank> 1.5
+    <Kps> 1.5
     <Button> Space 5
-    <Blank> 1.5
+    <Total> 1.5
   </Row>
 </Column>
 ```
 
-![_3U__D_R_0VQSCXN76E_@@V.png](https://s2.loli.net/2022/05/02/zL3IX9URwJ2hyFr.png)
+![B___E__@W_OQ8J1_S2XY066.png](https://s2.loli.net/2022/05/05/YPQuJhXT3UwSyrb.png)
 
 在 `/examples` 文件夹中，会有若干个键位布局模板。你可以根据上述规则创建你自己的键位布局。如果你觉得你的键位布局很实用，可以尝试开一个 Issue 并提供它。
 

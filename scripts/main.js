@@ -20,6 +20,7 @@
   let keyCounter = {};
   let displayShortcut = false;
   let clickedSwicher = {};
+  let useKps = false;
 
   let useLockShortcut = false;
   let lockShortcutInfo = {};
@@ -178,14 +179,19 @@
     let p = codeToKey[ck].id.toUpperCase();
     if((keyTotalCountMode === "normal" || keyCounter[p] !== undefined) && wheel !== true){
       ++ hitTotal;
+      $(".buttonCountDiv[type=total] > span").html(hitTotal);
       ++ cpsCount;
       if(toolBarMode === "tot")
         $(".debugInfo").html((keyTotalCountMode === "normal" ? "" : "S-") + "TOTAL " + hitTotal);
-      else if(toolBarMode === "cps"){
-        $(".debugInfo").html((keyTotalCountMode === "normal" ? "" : "S-") + "TOTAL " + hitTotal + "<span style='position: absolute; top: 0px; right: 0px'>CPS " + cpsCount + "</span>");
+      else if(useKps){
+        if(toolBarMode === "kps")
+          $(".debugInfo").html((keyTotalCountMode === "normal" ? "" : "S-") + "TOTAL " + hitTotal + "<span style='position: absolute; top: 0px; right: 0px'>KPS " + cpsCount + "</span>");
+        $(".buttonCountDiv[type=kps] > span").html(cpsCount);
         setTimeout(() => {
           -- cpsCount;
-          $(".debugInfo").html((keyTotalCountMode === "normal" ? "" : "S-") + "TOTAL " + hitTotal + "<span style='position: absolute; top: 0px; right: 0px'>CPS " + cpsCount + "</span>");
+          if(toolBarMode === "kps")
+            $(".debugInfo").html((keyTotalCountMode === "normal" ? "" : "S-") + "TOTAL " + hitTotal + "<span style='position: absolute; top: 0px; right: 0px'>KPS " + cpsCount + "</span>");
+          $(".buttonCountDiv[type=kps] > span").html(cpsCount);
         }, 1000);
       }
     }
@@ -415,7 +421,7 @@
           else
             keyHeatmap = (data.keyHeatmap === "light" ? -0.5 : (data.keyHeatmap === "dark" ? 0.4 : Math.max(-1, Math.min(1, data.keyHeatmap))));
         }
-        if(typeof(data.toolBarMode) === "string" && (data.toolBarMode === "none" || data.toolBarMode === "debug" || data.toolBarMode === "cps" || data.toolBarMode === "tot"))
+        if(typeof(data.toolBarMode) === "string" && (data.toolBarMode === "none" || data.toolBarMode === "debug" || data.toolBarMode === "kps" || data.toolBarMode === "tot"))
           toolBarMode = data.toolBarMode;
         if(typeof(data.keyTotalCountMode) === "string" && (data.keyTotalCountMode === "normal" || data.keyTotalCountMode === "strict"))
           keyTotalCountMode = data.keyTotalCountMode;
@@ -454,6 +460,9 @@
         setErrorMessage("Cannot load options.");
       }
     });
+
+    if(toolBarMode === "kps")
+      useKps = true;
 
     if(errorMessage)
       return;
@@ -628,6 +637,19 @@
               res += `<div class="buttonDiv" key="${keyIdMask(cnt)}" height=${ht} width=${wd} font=${ft}><span>${icons[cnt]}</span>${keyCount ? "<span class='counter'>0</span>" : ""}</div>`;
               keyCounter[cnt] = 0;
             }
+            else if(dt[0] == '<Kps>'){
+              var wd = getNum(dt[1]);
+              var ht = getNum(dt[2]);
+              var ft = getNum(dt[3]);
+              res += `<div class="buttonCountDiv" type="kps" height=${ht} width=${wd} font=${ft}><div class='keyBg'><i class='fas fa-stopwatch'></i></div><span>0</span></div>`;
+              useKps = true;
+            }
+            else if(dt[0] == '<Total>'){
+              var wd = getNum(dt[1]);
+              var ht = getNum(dt[2]);
+              var ft = getNum(dt[3]);
+              res += `<div class="buttonCountDiv" type="total" height=${ht} width=${wd} font=${ft}><div class='keyBg'><i class='fas fa-keyboard'></i></div><span>0</span></div>`;
+            }
             else if(dt[0] === undefined){
               setErrorMessage("Unknown token at statement " + statementId + ".");
               return;
@@ -644,7 +666,7 @@
         }
         $(".keyboardContainer").html("<div style='margin-bottom: 2px; overflow: visible'>"
           + (toolBarMode === "none" ? "" : "<div class='debugInfo'>" + 
-            (toolBarMode === "cps" ? (keyTotalCountMode === "normal" ? "" : "S-") + "TOTAL 0<span style='position: absolute; top: 0px; right: 0px'>CPS 0</span>" : (toolBarMode === "tot" ? (keyTotalCountMode === "normal" ? "" : "S-") + "TOTAL 0" : "DEBUG INFO"))
+            (toolBarMode === "kps" ? (keyTotalCountMode === "normal" ? "" : "S-") + "TOTAL 0<span style='position: absolute; top: 0px; right: 0px'>KPS 0</span>" : (toolBarMode === "tot" ? (keyTotalCountMode === "normal" ? "" : "S-") + "TOTAL 0" : "DEBUG INFO"))
           + "</div>")
           + res
           + "</div>");
@@ -657,6 +679,14 @@
           );
           if(keyHeatmap !== "none")
             $(this).css("background", getColorFromPercent(0, keyHeatmap));
+        });
+        $(".buttonCountDiv").each(function(){
+          $(this).attr("style", getScaleStyle(
+            Number($(this).attr("width")),
+            Number($(this).attr("height")),
+            Number($(this).attr("font")),
+            keyCount)
+          );
         });
         if(displayShortcut)
           $(".shortcutKeyContainer").css("display", "block");

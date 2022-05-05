@@ -1,12 +1,12 @@
 # KeyboardOverlay
 
-A highly customizable keyboard displayer, including shortcut keys, key count, cps display and so on.
+A highly customizable keyboard displayer, including shortcut keys, key count, kps display and so on.
 
 [中文介绍](https://github.com/tiger2005/KeyboardOverlay/blob/main/README-zh_cn.md)
 
 ![RP53DLI5_NW`W21O4VM_PT6.png](https://s2.loli.net/2022/05/02/mldJFwyZ9aDzGCn.png)
 
-This is an example keyboard overlay, using map in windows-80.txt, cps mode and shortcut key display. The font family is "Config".
+This is an example keyboard overlay, using map in windows-80.txt, kps mode and shortcut key display. The font family is "Config".
 
 This project is developed by Electron. It requires ioHook to capture global keyboard & mouse events, and FontAwesome v6 for icon library.
 
@@ -41,7 +41,7 @@ This command will add a folder `/node_modules/iohook/builds`, with pre-build fil
 ## Features
 
 - You can modify all the colors, sizes and font family.
-- The project supports many functions such as key count, key heatmap, cps and shortcur key displays.
+- The project supports many functions such as key count, key heatmap, kps and shortcur key displays.
 - The project is cross-platform, and all you need to do is to change the key bindings.
 - You can change the permutation of the keyboard to almost anyway you like.
 - The keyboard will keep rendering if you don't minimize it, so you can use it in capture softwares such as OBS Studio.
@@ -67,7 +67,7 @@ This is a json file including all the function switchers and style settings. Key
 | fontSize | number | Default font size for keys |
 | fontFamily | string | Font family for all the texts |
 | alwaysOnTop | boolean | Select if the keyboard is always at the front of all the windows |
-| toolBarMode | "none", "debug", "cps" or "tot" | Open debug mode, cps mode or total-only mode |
+| toolBarMode | "none", "debug", "kps" or "tot" | Open debug mode, kps mode or total-only mode |
 | toolBarFontSize | number | Font size for toolbar |
 | keyCount | boolean | Display press count of each key |
 | keyHeatmap | "none", "light", "dark" or a number | Open heatmap and set brightness |
@@ -79,15 +79,15 @@ This is a json file including all the function switchers and style settings. Key
 
 Some details below:
 
-**Toolbar mode**: can be "debug mode" (display the key code you pressed), "cps mode" (calculate and display total press count and current cps) and "total mode" (only calculate and display press count).
+**Toolbar mode**: can be "debug mode" (display the key code you pressed), "kps mode" (calculate and display total press count and current kps) and "total mode" (only calculate and display press count).
 
 **Heatmap brightness**: can be a number between -1.0 and 1.0. The closer the number is to -1.0, the lighter the colors will be. `light` and `dark` are equal to -0.4 and 0.5, respectively.
 
-**Strict count mode**: a mode that only the keys on the keyboard will be calculated into press count and cps. In this mode, `TOTAL` will change to `S-TOTAL`.
+**Strict count mode**: a mode that only the keys on the keyboard will be calculated into press count and kps. In this mode, `TOTAL` will change to `S-TOTAL`.
 
 **Key shortcut**: you should use following arguments to initialize the shortcut:
 
-```json
+```
 {
   "id": "L",        // The ID of the key
   "shiftKey": true, // If Shift is needed to press
@@ -177,11 +177,13 @@ Let's say that the `default_size` of keys and blanks is `2 * default_font_size`.
 | :-: | :-: |
 | `<Row>...</Row>` | Aligned items in a row |
 | `<Column>...</Column>` | Aligned items in a column |
-| `<Blanks> width height` | A blank block with the size of `(default_size * width)px x (default_size * height)px`. The arguments can be absent, with default values of 1 |
+| `<Blank> width height` | A blank block with the size of `(default_size * width)px x (default_size * height)px`. The arguments can be absent, with default values of 1 |
 | `<Button> keyId width height fontSize` | A button defined by key id, with the size of `(default_size * width)px x (default_size * height)px` and the font size of `fontSize * default_font_size`. Arguments `width, height, fontSize` can be absent, with default values of 1 |
 | `<Icon> keyId width height fontSize` | Same as `<Button>`, but use the icon as the key text. |
+| `<Kps> width height fontSize` | A KPS display block, with the size of `(default_size * width)px x (default_size * height)px` and the font size of `fontSize * default_font_size`. The arguments can be absent, with default values of 1 |
+| `<Total> width height fontSize` | A TOTAL display block, with the size of `(default_size * width)px x (default_size * height)px` and the font size of `fontSize * default_font_size`. The arguments can be absent, with default values of 1 |
 
-For example, you can quickly generate a 9-key keyboard by this code:
+For example, you can quickly generate a 9-key keyboard with kps and total key by this code:
 
 ```
 <Column>
@@ -196,14 +198,14 @@ For example, you can quickly generate a 9-key keyboard by this code:
     <Button> ; 1 1.5
   </Row>
   <Row>
-    <Blank> 1.5
+    <Kps> 1.5
     <Button> Space 5
-    <Blank> 1.5
+    <Total> 1.5
   </Row>
 </Column>
 ```
 
-![_3U__D_R_0VQSCXN76E_@@V.png](https://s2.loli.net/2022/05/02/zL3IX9URwJ2hyFr.png)
+![B___E__@W_OQ8J1_S2XY066.png](https://s2.loli.net/2022/05/05/YPQuJhXT3UwSyrb.png)
 
 In `/examples` folder, there are some templates of maps. You can make your own map file with the rules above. If you thought that your map file is practical, you can open an Issue and provide it.
 
