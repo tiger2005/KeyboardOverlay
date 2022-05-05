@@ -9,6 +9,7 @@
   --font-family: Monaco, Menlo, "Ubuntu Mono", Consolas, source-code-pro, monospace;
   --key-shadow-color: #FFF8;
   --tool-bar-font-size: 1em;
+  --tick-background: orange;
 }
 .buttonDivCpoy {
   display: inline-flex;
@@ -24,7 +25,6 @@
   transform: translateY(0px);
   transition: var(--bounce-time) transform, var(--bounce-time) box-shadow, var(--bounce-time) background, var(--bounce-time) color;
   text-decoration: none;
-  user-select: none;
   overflow: hidden;
   font-size: 1em;
   line-height: 1em;
@@ -47,7 +47,6 @@
   transform: translateY(0px);
   transition: var(--bounce-time);
   text-decoration: none;
-  user-select: none;
   overflow: hidden;
 }
 .buttonDiv span:first-child {
@@ -69,6 +68,10 @@ body {
   font-size: var(--font-size);
   overflow: hidden;
   display: inline-block;
+}
+
+* {
+  user-select: none;
 }
 
 .innerContent {
@@ -167,7 +170,7 @@ body.at_desktop {
 }
 
 .lockerMask i{
-  font-size: 16px;
+  font-size: 20px;
   color: var(--key-font-color);
   transition: 0.2s;
   cursor: pointer;
@@ -191,9 +194,110 @@ body.at_desktop {
   top: calc(50% + 2px);
   left: 50%;
   transform: translate(-50%, -50%);
-  color: red;
   z-index: -1;
   color: inherit;
   font-size: 1.1em;
   opacity: 0.3;
+}
+
+.tickDisplayer {
+  margin: 3px;
+  position: relative;
+  border-radius: 3px;
+  overflow: hidden;
+  transition: var(--bounce-time);
+  background: var(--key-background-color);
+  font-family: var(--font-family);
+  color: var(--key-font-color);
+}
+
+.tickDisplayer.right .tickMark {
+  background: linear-gradient(90deg, transparent 70%, var(--background-color) 100%);
+  font-size: 1em;
+  line-height: inherit;
+  text-align: right;
+  box-sizing: border-box;
+  padding-right: 0.5em;
+  font-weight: bold;
+  font-family: inherit;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: 1;
+}
+
+.tickDisplayer.left .tickMark {
+  background: linear-gradient(270deg, transparent 70%, var(--background-color) 100%);
+  font-size: 1em;
+  line-height: inherit;
+  text-align: left;
+  box-sizing: border-box;
+  padding-left: 0.5em;
+  font-weight: bold;
+  font-family: inherit;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: 1;
+}
+
+.tickDisplayer.up .tickMark {
+  background: linear-gradient(0deg, transparent 70%, var(--background-color) 100%);
+  font-size: 1em;
+  line-height: 1em;
+  text-align: center;
+  box-sizing: border-box;
+  padding-top: 0.2em;
+  font-weight: bold;
+  font-family: inherit;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: 1;
+}
+
+.tickDisplayer.down .tickMark {
+  background: linear-gradient(180deg, transparent 70%, var(--background-color) 100%);
+  font-size: 1em;
+  line-height: 1em;
+  text-align: center;
+  box-sizing: border-box;
+  font-weight: bold;
+  font-family: inherit;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: 1;
+}
+
+.tickDisplayer.down .tickMark span {
+  position: absolute;
+  display: inline-block;
+  bottom: 0.2em;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.oneTick {
+  position: absolute;
+  border-radius: 0px;
+  background: var(--tick-background);
+}
+
+.tickDisplayer.left .oneTick, .tickDisplayer.right .oneTick{
+  height: 100%;
+  top: 0;
+}
+
+.tickDisplayer.up .oneTick, .tickDisplayer.down .oneTick{
+  width: 100%;
+  left: 0;
 }

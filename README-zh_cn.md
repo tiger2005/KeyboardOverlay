@@ -50,7 +50,19 @@ npm rebuild --runtime=electron --target=12.0.0 --disturl=https://atom.io/downloa
 
 ## 设置
 
-你可以改变 `/asserts` 里面的文件以更改键盘属性。 **注意**: 如果你是用的是发行版本，这个文件夹在 `/resources/app/` 中。
+你可以在 `/asserts` 里面创建文件夹，并通过里面的文件更改键盘属性。 **注意**: 如果你是用的是发行版本，这个文件夹在 `/resources/app/` 中。你可以对于每一个用途单独建立一个文件夹存储设置信息，方便进行设置切换。
+
+切换通过 `/asserts/switch.json` 实现。其构成如下：
+
+```json
+{
+  "location": ["game", "abc"]
+}
+```
+
+其表示导入 `/asserts/game/abc/` 内的设置文件进行键盘设置。如果这个文件不存在或者数组为空，将会使用 `/asserts/` 内的设置文件直接进行设置。
+
+以下为所有需要的设置文件：
 
 ### options.json
 
@@ -77,7 +89,9 @@ npm rebuild --runtime=electron --target=12.0.0 --disturl=https://atom.io/downloa
 |        bounceTime        |               number                |        一个按键弹起的毫秒数        |
 |       lockShortcut       |               object                |          锁定的快捷键信息        |
 |      cleanShortcut       |               object                |          清空的快捷键信息        |
- 
+|        tickSpeed         |               number                |            点击波动速度          |
+|    tickBackgroundColor   |               string                |          点击波动背景颜色        |
+
 一些细节如下：
 
 **工具栏模式**：可以是“调试模式”（显示当前按键的键值）、“KPS 模式”（显示目前按下的按键次数和 KPS）和“仅统计模式”（只统计按键次数）。
@@ -114,6 +128,8 @@ npm rebuild --runtime=electron --target=12.0.0 --disturl=https://atom.io/downloa
   "keyActiveFontColor": "white",
 }
 ```
+
+**波动**：将会在之后的 `map.txt` 中讲到。
 
 ---
 
@@ -184,6 +200,9 @@ npm rebuild --runtime=electron --target=12.0.0 --disturl=https://atom.io/downloa
 |  `<Icon> keyId width height fontSize`  |         和 `<Button>` 一样，但是使用图标作为按键文字         |
 |    `<Kps> width height fontSize`       | 一个 KPS 显示块，大小为 `(default_size * width)px x (default_size * height)px`，字体大小为 `fontSize * default_font_size`。参数可以省略，此时默认为 1 |
 |   `<Total> width height fontSize`      | 一个点击总数显示块，大小为 `(default_size * width)px x (default_size * height)px`，字体大小为 `fontSize * default_font_size`。参数可以省略，此时默认为 1 |
+| `<Tick> keyId dir height width fontSize` | 一个点击波纹模块，绑定到键 ID 为 keyId 的键上，方向为 dir（"right"、"left"、"top"、"bottom" 中的一个），其余同上。此时将会生成一个无文字的点击波纹，在点击的时候将会出现一个矩形并且跟着方向移动，松开后矩形会固定大小并且移动直到超出边框。dir 默认为 "right"，其余同上 |
+| `<TickText> keyId dir height width fontSize` | 同上，但是会显示键名称 |
+| `<TickIcon> keyId dir height width fontSize` | 同上，但是会显示键图标 |
 
 比如说，你可以使用以下代码快速生成一个 9K 带键盘信息显示的键盘：
 
@@ -208,6 +227,27 @@ npm rebuild --runtime=electron --target=12.0.0 --disturl=https://atom.io/downloa
 ```
 
 ![B___E__@W_OQ8J1_S2XY066.png](https://s2.loli.net/2022/05/05/YPQuJhXT3UwSyrb.png)
+
+也可以使用如下代码生成一个 Z-X 按键的游戏键盘：
+
+```
+<Column>
+  <Row>
+    <TickText> Z right 5
+    <Button> Z
+  </Row>
+  <Row>
+    <TickText> X right 5
+    <Button> X
+  </Row>
+  <Row>
+    <Kps> 2
+    <Total> 4
+  </Row>
+</Column>
+```
+
+![TL__M9Z_RNR1__CMTUYE_J8.png](https://s2.loli.net/2022/05/05/YNzTBP78Z1ExdVQ.png)
 
 在 `/examples` 文件夹中，会有若干个键位布局模板。你可以根据上述规则创建你自己的键位布局。如果你觉得你的键位布局很实用，可以尝试开一个 Issue 并提供它。
 

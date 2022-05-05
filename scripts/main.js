@@ -21,6 +21,10 @@
   let displayShortcut = false;
   let clickedSwicher = {};
   let useKps = false;
+  let majorFontSize = 14;
+  let tickSpeed = 10;
+
+  let directoryLocation = undefined;
 
   let useLockShortcut = false;
   let lockShortcutInfo = {};
@@ -101,6 +105,9 @@
     $(".innerContent").addClass("addBlur");
     hitMatrix = {};
     $(".buttonDiv").removeClass("clicked");
+    $(`.tickDisplayer`).each(function(){
+      tickRemoveEvent(Number($(this).attr("index")));
+    });
     if(!silent && runInElectron) {
       let option = {
         title: "The keyboard had been locked!",
@@ -144,6 +151,183 @@
       $(`.buttonDiv > .counter`).each(function(){
           $(this).html(0);
       });
+    $(".buttonCountDiv[type=total] > span").html("0");
+  }
+
+  let tickIndexToEvent = {};
+  let animationEnd = {};
+  let tickEventIndex = 0;
+  const tickAddEvent = (idx) => {
+    if(tickIndexToEvent[idx] === undefined)
+      tickIndexToEvent[idx] = 0;
+    if(tickIndexToEvent[idx] !== 0)
+      return;
+    const tkIdx = ++ tickEventIndex;
+    tickIndexToEvent[idx] = tkIdx;
+    let dom = $(`.tickDisplayer[index=${idx}]`);
+    if(dom.hasClass("right")){
+      let len = dom.width();
+      let moveTime = len / (tickSpeed * majorFontSize);
+      let ele = undefined;
+      dom.append(ele = $(`<div class='oneTick' id=${tkIdx} style="width: ${2 * len}px; transition: transform ${2 * moveTime}s linear; right: ${len}px"></div>`));
+      setTimeout(() => {
+        ele.css("transform", `translateX(${2 * len}px)`);
+        setTimeout(() => {
+          animationEnd[tkIdx] = true;
+        }, moveTime * 1000);
+      }, 20);
+    }
+    else if(dom.hasClass("left")){
+      let len = dom.width();
+      let moveTime = len / (tickSpeed * majorFontSize);
+      let ele = undefined;
+      dom.append(ele = $(`<div class='oneTick' id=${tkIdx} style="width: ${2 * len}px; transition: transform ${2 * moveTime}s linear; left: ${len}px"></div>`));
+      setTimeout(() => {
+        ele.css("transform", `translateX(${-2 * len}px)`);
+        setTimeout(() => {
+          animationEnd[tkIdx] = true;
+        }, moveTime * 1000);
+      }, 20);
+    }
+    else if(dom.hasClass("down")){
+      let len = dom.height();
+      let moveTime = len / (tickSpeed * majorFontSize);
+      let ele = undefined;
+      dom.append(ele = $(`<div class='oneTick' id=${tkIdx} style="height: ${2 * len}px; transition: transform ${2 * moveTime}s linear; bottom: ${len}px"></div>`));
+      setTimeout(() => {
+        ele.css("transform", `translateY(${2 * len}px)`);
+        setTimeout(() => {
+          animationEnd[tkIdx] = true;
+        }, moveTime * 1000);
+      }, 20);
+    }
+    else{
+      let len = dom.height();
+      let moveTime = len / (tickSpeed * majorFontSize);
+      let ele = undefined;
+      dom.append(ele = $(`<div class='oneTick' id=${tkIdx} style="height: ${2 * len}px; transition: transform ${2 * moveTime}s linear; top: ${len}px"></div>`));
+      setTimeout(() => {
+        ele.css("transform", `translateY(${-2 * len}px)`);
+        setTimeout(() => {
+          animationEnd[tkIdx] = true;
+        }, moveTime * 1000);
+      }, 20);
+    }
+  };
+  const tickRemoveEvent = (idx) => {
+    if(tickIndexToEvent[idx] === 0 || tickIndexToEvent[idx] === undefined)
+      return;
+    let dom = $(`.tickDisplayer[index=${idx}]`);
+    let tkIdx = tickIndexToEvent[idx];
+    tickIndexToEvent[idx] = 0;
+    if(dom.hasClass("right")){
+      let len = dom.width();
+      let ele = $(`.oneTick[id=${tkIdx}]`);
+      let moveTime = len / (tickSpeed * majorFontSize);
+      if(animationEnd[tkIdx]){
+        ele.remove();
+        delete animationEnd[tkIdx];
+        tkIdx = ++ tickEventIndex;
+        dom.append(ele = $(`<div class='oneTick' id=${tkIdx} style="width: ${len}px; transition: transform ${moveTime}s linear; right: 0px"></div>`));
+        setTimeout(() => {
+          ele.css("transform", `translateX(${len}px)`);
+          setTimeout(() => {
+            ele.remove();
+          }, moveTime * 1000);
+        }, 20);
+      }
+      else{
+        let p = ele.position().left;
+        p = 2 * len + p;
+        p = Math.max(p, 0.05 * (moveTime * majorFontSize));
+        ele.css("width", Math.ceil(p));
+        setTimeout(() => {
+          ele.remove();
+          delete animationEnd[tkIdx];
+        }, moveTime * 1000);
+      }
+    }
+    else if(dom.hasClass("left")){
+      let len = dom.width();
+      let ele = $(`.oneTick[id=${tkIdx}]`);
+      let moveTime = len / (tickSpeed * majorFontSize);
+      if(animationEnd[tkIdx]){
+        ele.remove();
+        delete animationEnd[tkIdx];
+        tkIdx = ++ tickEventIndex;
+        dom.append(ele = $(`<div class='oneTick' id=${tkIdx} style="width: ${len}px; transition: transform ${moveTime}s linear; left: 0px"></div>`));
+        setTimeout(() => {
+          ele.css("transform", `translateX(${-1 * len}px)`);
+          setTimeout(() => {
+            ele.remove();
+          }, moveTime * 1000);
+        }, 20);
+      }
+      else{
+        let p = ele.position().left;
+        p = len - p;
+        p = Math.max(p, 0.05 * (moveTime * majorFontSize));
+        ele.css("width", Math.ceil(p));
+        setTimeout(() => {
+          ele.remove();
+          delete animationEnd[tkIdx];
+        }, moveTime * 1000);
+      }
+    }
+    else if(dom.hasClass("down")){
+      let len = dom.height();
+      let ele = $(`.oneTick[id=${tkIdx}]`);
+      let moveTime = len / (tickSpeed * majorFontSize);
+      if(animationEnd[tkIdx]){
+        ele.remove();
+        delete animationEnd[tkIdx];
+        tkIdx = ++ tickEventIndex;
+        dom.append(ele = $(`<div class='oneTick' id=${tkIdx} style="height: ${len}px; transition: transform ${moveTime}s linear; bottom: 0px"></div>`));
+        setTimeout(() => {
+          ele.css("transform", `translateY(${len}px)`);
+          setTimeout(() => {
+            ele.remove();
+          }, moveTime * 1000);
+        }, 20);
+      }
+      else{
+        let p = ele.position().top;
+        p = 2 * len + p;
+        p = Math.max(p, 0.05 * (moveTime * majorFontSize));
+        ele.css("height", Math.ceil(p));
+        setTimeout(() => {
+          ele.remove();
+          delete animationEnd[tkIdx];
+        }, moveTime * 1000);
+      }
+    }
+    else{
+      let len = dom.height();
+      let ele = $(`.oneTick[id=${tkIdx}]`);
+      let moveTime = len / (tickSpeed * majorFontSize);
+      if(animationEnd[tkIdx]){
+        ele.remove();
+        delete animationEnd[tkIdx];
+        tkIdx = ++ tickEventIndex;
+        dom.append(ele = $(`<div class='oneTick' id=${tkIdx} style="height: ${len}px; transition: transform ${moveTime}s linear; top: 0px"></div>`));
+        setTimeout(() => {
+          ele.css("transform", `translateY(${-1 * len}px)`);
+          setTimeout(() => {
+            ele.remove();
+          }, moveTime * 1000);
+        }, 20);
+      }
+      else{
+        let p = ele.position().top;
+        p = len - p;
+        p = Math.max(p, 0.05 * (moveTime * majorFontSize));
+        ele.css("height", Math.ceil(p));
+        setTimeout(() => {
+          ele.remove();
+          delete animationEnd[tkIdx];
+        }, moveTime * 1000);
+      }
+    }
   }
 
   let hitMatrix = {};
@@ -240,10 +424,14 @@
       if(keyHeatmap !== "none")
         flushHeatmap(p);
     }
-    if(p !== undefined)
+    if(p !== undefined){
       $(`.buttonDiv[key=${keyIdMask(p)}]`).each(function(){
           $(this).addClass("clicked");
       });
+      $(`.tickDisplayer[key=${keyIdMask(p)}]`).each(function(){
+        tickAddEvent(Number($(this).attr("index")));
+      });
+    }
     if(displayShortcut && codeToKey[ck].mouse !== true){
       let q = codeToKey[ck];
       if(q.switch !== undefined){
@@ -310,10 +498,14 @@
       shiftOnEnter = Math.max(shiftOnEnter - 1, 0);
     flushShift(e.shiftKey);
     let p = codeToKey[ck].id.toUpperCase();
-    if(p !== undefined)
+    if(p !== undefined){
       $(`.buttonDiv[key=${keyIdMask(p)}]`).each(function(){
           $(this).removeClass("clicked");
       });
+      $(`.tickDisplayer[key=${keyIdMask(p)}]`).each(function(){
+        tickRemoveEvent(Number($(this).attr("index")));
+      });
+    }
     if(displayShortcut && codeToKey[ck].mouse !== true){
       let q = codeToKey[ck];
       if(q.switch !== undefined){
@@ -357,9 +549,11 @@
   };
 
   const setErrorMessage = (x) => {
+    if(directoryLocation !== undefined)
+      x = x + "<br/>" + "Directory: /" + directoryLocation;
     errorMessage = true;
-    $(".keyboardContainer").html(`<div style="display: flex; flex-direction: column; text-align: center; padding: 3px 5px;" class="buttonDiv">
-      <i class='fas fa-circle-xmark' style="color: red; font-size: 1.5em"></i>
+    $(".keyboardContainer").html(`<div style="display: flex; flex-direction: column; text-align: center; padding: 3px 5px; max-width: 300px;" class="buttonDiv">
+      <i class='fas fa-circle-xmark' style="color: red; font-size: 1.5em;"></i>
       <span style="color: var(--key-font-color)">${x}</span>
     </div>`);
     if(runInElectron){
@@ -439,7 +633,49 @@
 
   const refreshOverallInfo = () => {
     $.ajax({
-      url: "asserts/options.json",
+      url: "asserts/switch.json",
+      async: false,
+      success: function(d) {
+        if(d.location !== undefined){
+          d = d.location;
+          if(typeof d !== "object" || !d.hasOwnProperty("length")){
+            setErrorMessage("Directory location should be an array with strings.");
+            return;
+          }
+          for(var i = 0; i < d.length; i++)
+            if(typeof d[i] !== "string"){
+              setErrorMessage("Directory location should be an array with strings.");
+              return;
+            }
+          const bannedList = ["\\", "/", ":", "*", "?", "\"", "<", ">", "|"];
+          for(var i = 0; i < d.length; i++){
+            var usage = true;
+            for(var j = 0; j < bannedList.length; j++)
+              usage &= (d[i].indexOf(bannedList[j]) === -1);
+            if(!usage){
+              setErrorMessage("Unexpected character found in location(s)");
+            }
+          }
+          directoryLocation = "";
+          for(var i = 0; i < d.length; i++)
+            directoryLocation += (d[i] + "/");
+        }
+        else {
+          setErrorMessage("Cannot get directory location option.");
+        }
+      },
+      error: function() {
+        directoryLocation = "";
+      }
+    });
+
+    console.log(directoryLocation);
+
+    if(errorMessage)
+      return;
+
+    $.ajax({
+      url: `asserts/${directoryLocation}options.json`,
       async: false,
       success: function(data){
         if(typeof data !== "object"){
@@ -458,8 +694,10 @@
           document.documentElement.style.setProperty("--key-active-background-color", data.keyActiveBackgroundColor);
         if(data.keyActiveFontColor !== undefined)
           document.documentElement.style.setProperty("--key-active-font-color", data.keyActiveFontColor);
+        if(data.tickBackgroundColor !== undefined)
+          document.documentElement.style.setProperty("--tick-background", data.tickBackgroundColor);
         if(typeof data.fontSize === "number")
-          document.documentElement.style.setProperty("--font-size", data.fontSize + "px");
+          document.documentElement.style.setProperty("--font-size", data.fontSize + "px"), majorFontSize = data.fontSize;
         if(data.fontFamily !== undefined)
           document.documentElement.style.setProperty("--font-family", data.fontFamily);
         if(typeof data.toolBarFontSize === "number")
@@ -521,6 +759,8 @@
           useCleanShortcut = true;
           cleanShortcutInfo = data.cleanShortcut;
         }
+        if(typeof(data.tickSpeed) === "number")
+          tickSpeed = data.tickSpeed <= 0 ? 10 : data.tickSpeed;
       },
       error: function(){
         setErrorMessage("Cannot load options.");
@@ -534,7 +774,7 @@
       return;
 
     $.ajax({
-      url: (runInElectron ? "asserts/bindings.json" : "asserts/bindings_web.json"),
+      url: (runInElectron ? `asserts/${directoryLocation}bindings.json` : `asserts/${directoryLocation}bindings_web.json`),
       async: false,
       success: function(data){
         if(typeof data !== "object" || ! data.hasOwnProperty("length")){
@@ -580,7 +820,7 @@
       return;
 
     $.ajax({
-      url: "asserts/icons.json",
+      url: `asserts/${directoryLocation}icons.json`,
       async: false,
       success: function(data){
         if(typeof data !== "object"){
@@ -616,7 +856,7 @@
     }
 
     $.ajax({
-      url: "asserts/map.txt",
+      url: `asserts/${directoryLocation}map.txt`,
       async: false,
       success: function(data) {
         var res = "";
@@ -631,6 +871,7 @@
         }
         var statementId = 0;
         var bracketList = [];
+        var tickIndex = 0;
         for(var i = 0; i < data.length; i ++){
           var p = data[i].split("\r");
           for(var j = 0; j < p.length; j ++){
@@ -716,6 +957,79 @@
               var ft = getNum(dt[3]);
               res += `<div class="buttonCountDiv" type="total" height=${ht} width=${wd} font=${ft}><div class='keyBg'><i class='fas fa-keyboard'></i></div><span>0</span></div>`;
             }
+            else if(dt[0] === "<Tick>"){
+              if(dt.length === 1){
+                setErrorMessage('Missing argument at statement ' + statementId + ".");
+                return;
+              }
+              var cnt = dt[1].toUpperCase();
+              if(idToKey[cnt] === undefined){
+                setErrorMessage("Cannot find key of id \"" + allHtmlSpecialChars(dt[1]) + '\" at statement ' + statementId + ".");
+                return;
+              }
+              var direction = dt[2];
+              if(direction === undefined)
+                direction = "right";
+              if(["up", "down", "left", "right"].indexOf(direction) === -1){
+                setErrorMessage('Unexpected direction at statement ' + statementId + ".");
+                return;
+              }
+              var wd = getNum(dt[3]);
+              var ht = getNum(dt[4]);
+              var ft = getNum(dt[5]);
+              res += `<div class="tickDisplayer ${direction}" index="${++ tickIndex}" key="${keyIdMask(cnt)}" height=${ht} width=${wd} font=${ft}><div class='tickMark'></div></div>`;
+              keyCounter[cnt] = 0;
+            }
+            else if(dt[0] === "<TickText>"){
+              if(dt.length === 1){
+                setErrorMessage('Missing argument at statement ' + statementId + ".");
+                return;
+              }
+              var cnt = dt[1].toUpperCase();
+              if(idToKey[cnt] === undefined){
+                setErrorMessage("Cannot find key of id \"" + allHtmlSpecialChars(dt[1]) + '\" at statement ' + statementId + ".");
+                return;
+              }
+              var direction = dt[2];
+              if(direction === undefined)
+                direction = "right";
+              if(["up", "down", "left", "right"].indexOf(direction) === -1){
+                setErrorMessage('Unexpected direction at statement ' + statementId + ".");
+                return;
+              }
+              var wd = getNum(dt[3]);
+              var ht = getNum(dt[4]);
+              var ft = getNum(dt[5]);
+              res += `<div class="tickDisplayer ${direction}" index="${++ tickIndex}" key="${keyIdMask(cnt)}" height=${ht} width=${wd} font=${ft}><div class='tickMark'><span>${idToKey[cnt].name}</span></div></div>`;
+              keyCounter[cnt] = 0;
+            }
+            else if(dt[0] === "<TickIcon>"){
+              if(dt.length === 1){
+                setErrorMessage('Missing argument at statement ' + statementId + ".");
+                return;
+              }
+              var cnt = dt[1].toUpperCase();
+              if(idToKey[cnt] === undefined){
+                setErrorMessage("Cannot find key of id \"" + allHtmlSpecialChars(dt[1]) + '\" at statement ' + statementId + ".");
+                return;
+              }
+              if(icons[cnt] === undefined){
+                setErrorMessage("Cannot find icon of id \"" + allHtmlSpecialChars(dt[1]) + '\" at statement ' + statementId + ".");
+                return;
+              }
+              var direction = dt[2];
+              if(direction === undefined)
+                direction = "right";
+              if(["up", "down", "left", "right"].indexOf(direction) === -1){
+                setErrorMessage('Unexpected direction at statement ' + statementId + ".");
+                return;
+              }
+              var wd = getNum(dt[3]);
+              var ht = getNum(dt[4]);
+              var ft = getNum(dt[5]);
+              res += `<div class="tickDisplayer ${direction}" index="${++ tickIndex}" key="${keyIdMask(cnt)}" height=${ht} width=${wd} font=${ft}><div class='tickMark'><span>${icons[cnt]}</span></div></div>`;
+              keyCounter[cnt] = 0;
+            }
             else if(dt[0] === undefined){
               setErrorMessage("Unknown token at statement " + statementId + ".");
               return;
@@ -747,6 +1061,14 @@
             $(this).css("background", getColorFromPercent(0, keyHeatmap));
         });
         $(".buttonCountDiv").each(function(){
+          $(this).attr("style", getScaleStyle(
+            Number($(this).attr("width")),
+            Number($(this).attr("height")),
+            Number($(this).attr("font")),
+            false)
+          );
+        });
+        $(".tickDisplayer").each(function(){
           $(this).attr("style", getScaleStyle(
             Number($(this).attr("width")),
             Number($(this).attr("height")),

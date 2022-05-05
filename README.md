@@ -50,7 +50,19 @@ This command will add a folder `/node_modules/iohook/builds`, with pre-build fil
 
 ## Settings
 
-You can change files in `/asserts` in order to modify the style of the keyboard. **Notice**: if you are using releases, the directory should be in `/resources/app/`.
+You can add some folders in `/asserts` and add setting files in order to modify the style of the keyboard. **Notice**: if you are using releases, the directory should be in `/resources/app/`. You can put different settings in different folders, in order to switch quickly.
+
+You can switch the settings by `/asserts/switch.json`. For example:
+
+```json
+{
+  "location": ["game", "abc"]
+}
+```
+
+means using setting files in `/asserts/game/abc/` to set up the keyboard. If the file doesn't exist or the array is empty, we use setting files in `/asserts/` to initialize.
+
+Here are all the setting files:
 
 ### options.json
 
@@ -77,6 +89,8 @@ This is a json file including all the function switchers and style settings. Key
 | bounceTime | number | Milliseconds for a key to bounce up |
 | lockShortcut | object | Information of lock shortcut |
 | cleanShortcut | object | Information of clean shortcut |
+| tickSpeed | number | Tick movement speed |
+| tickBackgroundColor | string | Tick background color |
 
 Some details below:
 
@@ -101,6 +115,8 @@ Some details below:
 The example above means `Ctrl + Shift + L`. If you use shortcut to lock / unlock the keyboard, you will receive a system message.
 
 **Clean shortcut**: the setting types are the same as key shortcut. after cleaning the keyboard, all the key count (so as the key heatmap and total count) will be set as zero.
+
+**Tick**: will be mentioned in `map.txt` section.
 
 If you use default settings, you can get a light keyboard with no functions. Here is a color scheme for a dark keyboard:
 
@@ -185,6 +201,9 @@ Let's say that the `default_size` of keys and blanks is `2 * default_font_size`.
 | `<Icon> keyId width height fontSize` | Same as `<Button>`, but use the icon as the key text. |
 | `<Kps> width height fontSize` | A KPS display block, with the size of `(default_size * width)px x (default_size * height)px` and the font size of `fontSize * default_font_size`. The arguments can be absent, with default values of 1 |
 | `<Total> width height fontSize` | A TOTAL display block, with the size of `(default_size * width)px x (default_size * height)px` and the font size of `fontSize * default_font_size`. The arguments can be absent, with default values of 1 |
+| `<Tick> keyId dir height width fontSize` | A tick for key with keyId as key, with the direction of dir (one of "right", "left", "top" and "bottom"), and some other settings that are the same as above. You can learn what 'tick' is from the example photo. The default value of "dir" is "right" |
+| `<TickText> keyId dir height width fontSize` | Same as above, but with key name |
+| `<TickIcon> keyId dir height width fontSize` | Same as above, but with key icon |
 
 For example, you can quickly generate a 9-key keyboard with kps and total key by this code:
 
@@ -209,6 +228,27 @@ For example, you can quickly generate a 9-key keyboard with kps and total key by
 ```
 
 ![B___E__@W_OQ8J1_S2XY066.png](https://s2.loli.net/2022/05/05/YPQuJhXT3UwSyrb.png)
+
+and a Z-X game keyboard:
+
+```
+<Column>
+  <Row>
+    <TickText> Z right 5
+    <Button> Z
+  </Row>
+  <Row>
+    <TickText> X right 5
+    <Button> X
+  </Row>
+  <Row>
+    <Kps> 2
+    <Total> 4
+  </Row>
+</Column>
+```
+
+![TL__M9Z_RNR1__CMTUYE_J8.png](https://s2.loli.net/2022/05/05/YNzTBP78Z1ExdVQ.png)
 
 In `/examples` folder, there are some templates of maps. You can make your own map file with the rules above. If you thought that your map file is practical, you can open an Issue and provide it.
 
