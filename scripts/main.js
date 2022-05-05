@@ -685,7 +685,7 @@
             Number($(this).attr("width")),
             Number($(this).attr("height")),
             Number($(this).attr("font")),
-            keyCount)
+            false)
           );
         });
         if(displayShortcut)
