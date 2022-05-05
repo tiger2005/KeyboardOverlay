@@ -143,6 +143,7 @@
       if(keyCounter.hasOwnProperty(i))
         keyCounter[i] = 0;
     currMaximum = 0;
+    hitTotal = 0;
     if(keyHeatmap !== "none")
       $(`.buttonDiv`).each(function(){
           $(this).css("background", getColorFromPercent(0, keyHeatmap));
