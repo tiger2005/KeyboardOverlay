@@ -242,6 +242,7 @@
         let p = ele.position().left;
         p = 2 * len + p;
         p = Math.max(p, 0.05 * (moveTime * majorFontSize));
+        p = Math.max(p, 4);
         ele.css("width", Math.ceil(p));
         setTimeout(() => {
           ele.css("width", Math.ceil(p));
@@ -272,6 +273,7 @@
         let p = ele.position().left;
         p = len - p;
         p = Math.max(p, 0.05 * (moveTime * majorFontSize));
+        p = Math.max(p, 4);
         ele.css("width", Math.ceil(p));
         setTimeout(() => {
           ele.css("width", Math.ceil(p));
@@ -302,6 +304,7 @@
         let p = ele.position().top;
         p = 2 * len + p;
         p = Math.max(p, 0.05 * (moveTime * majorFontSize));
+        p = Math.max(p, 4);
         ele.css("height", Math.ceil(p));
         setTimeout(() => {
           ele.css("height", Math.ceil(p));
@@ -332,6 +335,7 @@
         let p = ele.position().top;
         p = len - p;
         p = Math.max(p, 0.05 * (moveTime * majorFontSize));
+        p = Math.max(p, 4);
         ele.css("height", Math.ceil(p));
         setTimeout(() => {
           ele.css("height", Math.ceil(p));
@@ -686,8 +690,6 @@
         directoryLocation = "";
       }
     });
-
-    console.log(directoryLocation);
 
     if(errorMessage)
       return;

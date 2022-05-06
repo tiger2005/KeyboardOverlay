@@ -169,7 +169,7 @@ npm rebuild --runtime=electron --target=12.0.0 --disturl=https://atom.io/downloa
 {
   "id": "0",         // 键的 ID。
   "name": "0",       // 键的名字（用于在键盘上显示）。
-  "code": 11,        // 键码，可以是一个数字。每一个键码应该是一个数字或者一个字符串。
+  "code": 11,        // 键码，可以是一个数组，表示将多个键码对应到一个键上。每一个键码应该是一个数字或者一个字符串。
   "upperKey": ")",   // 按下 Shift 后需要显示的字符。可选项。
   "switch": "Shift", // 在快捷键组合中是否为功能键，且给出其名字。可选项。
   "mouse": true      // 这个键是否为鼠标类型的按键。可选项。
@@ -272,3 +272,5 @@ npm rebuild --runtime=electron --target=12.0.0 --disturl=https://atom.io/downloa
 如果你找到了任何的 bug 或者想要提出功能需求，请开 Issue 告诉我们。
 
 如果你想要提供你的键位布局或者按键映射，请开 Issue 或者 Pull Request，并提供它们。
+
+QQ 群：862155660。
