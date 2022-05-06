@@ -290,6 +290,7 @@ body.at_desktop {
   position: absolute;
   border-radius: 0px;
   background: var(--tick-background);
+  border-radius: 3px;
 }
 
 .tickDisplayer.left .oneTick, .tickDisplayer.right .oneTick{

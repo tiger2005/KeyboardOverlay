@@ -23,6 +23,7 @@
   let useKps = false;
   let majorFontSize = 14;
   let tickSpeed = 10;
+  let isReady = false;
 
   let directoryLocation = undefined;
 
@@ -243,6 +244,9 @@
         p = Math.max(p, 0.05 * (moveTime * majorFontSize));
         ele.css("width", Math.ceil(p));
         setTimeout(() => {
+          ele.css("width", Math.ceil(p));
+        }, 20);
+        setTimeout(() => {
           ele.remove();
           delete animationEnd[tkIdx];
         }, moveTime * 1000);
@@ -269,6 +273,9 @@
         p = len - p;
         p = Math.max(p, 0.05 * (moveTime * majorFontSize));
         ele.css("width", Math.ceil(p));
+        setTimeout(() => {
+          ele.css("width", Math.ceil(p));
+        }, 20);
         setTimeout(() => {
           ele.remove();
           delete animationEnd[tkIdx];
@@ -297,6 +304,9 @@
         p = Math.max(p, 0.05 * (moveTime * majorFontSize));
         ele.css("height", Math.ceil(p));
         setTimeout(() => {
+          ele.css("height", Math.ceil(p));
+        }, 20);
+        setTimeout(() => {
           ele.remove();
           delete animationEnd[tkIdx];
         }, moveTime * 1000);
@@ -324,6 +334,9 @@
         p = Math.max(p, 0.05 * (moveTime * majorFontSize));
         ele.css("height", Math.ceil(p));
         setTimeout(() => {
+          ele.css("height", Math.ceil(p));
+        }, 20);
+        setTimeout(() => {
           ele.remove();
           delete animationEnd[tkIdx];
         }, moveTime * 1000);
@@ -336,6 +349,8 @@
   let cpsCount = 0;
   let keyboardLocked = false;
   const keydownEvent = (e, wheel) => {
+    if(! isReady)
+      return;
     const ck = (typeof e === "string" ? e : (runInElectron ? e.keycode : e.code));
     if(keyboardLocked){
       if(codeToKey[ck] === undefined)
@@ -487,6 +502,8 @@
     }
   };
   const keyupEvent = (e, wheel) => {
+    if(! isReady)
+      return;
     if(keyboardLocked)
       return;
     const ck = (typeof e === "string" ? e : (runInElectron ? e.keycode : e.code));
@@ -1080,7 +1097,8 @@
         if(displayShortcut)
           $(".shortcutKeyContainer").css("display", "block");
         if(runInElectron)
-          win.setSize(Math.ceil($(".innerContent").outerWidth()), Math.ceil($(".innerContent").outerHeight()));
+          win.setSize(Math.floor($(".innerContent").outerWidth()), Math.floor($(".innerContent").outerHeight()));
+        isReady = true;
       },
       error: function(){
         setErrorMessage("Cannot load map file.");
