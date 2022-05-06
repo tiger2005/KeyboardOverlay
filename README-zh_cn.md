@@ -200,9 +200,9 @@ npm rebuild --runtime=electron --target=12.0.0 --disturl=https://atom.io/downloa
 |  `<Icon> keyId width height fontSize`  |         和 `<Button>` 一样，但是使用图标作为按键文字         |
 |    `<Kps> width height fontSize`       | 一个 KPS 显示块，大小为 `(default_size * width)px x (default_size * height)px`，字体大小为 `fontSize * default_font_size`。参数可以省略，此时默认为 1 |
 |   `<Total> width height fontSize`      | 一个点击总数显示块，大小为 `(default_size * width)px x (default_size * height)px`，字体大小为 `fontSize * default_font_size`。参数可以省略，此时默认为 1 |
-| `<Tick> keyId dir height width fontSize` | 一个点击波纹模块，绑定到键 ID 为 keyId 的键上，方向为 dir（"right"、"left"、"top"、"bottom" 中的一个），其余同上。此时将会生成一个无文字的点击波纹，在点击的时候将会出现一个矩形并且跟着方向移动，松开后矩形会固定大小并且移动直到超出边框。dir 默认为 "right"，其余同上 |
-| `<TickText> keyId dir height width fontSize` | 同上，但是会显示键名称 |
-| `<TickIcon> keyId dir height width fontSize` | 同上，但是会显示键图标 |
+| `<Tick> keyId dir width height fontSize` | 一个点击波纹模块，绑定到键 ID 为 keyId 的键上，方向为 dir（"right"、"left"、"top"、"bottom" 中的一个），其余同上。此时将会生成一个无文字的点击波纹，在点击的时候将会出现一个矩形并且跟着方向移动，松开后矩形会固定大小并且移动直到超出边框。dir 默认为 "right"，其余同上 |
+| `<TickText> keyId dir width height fontSize` | 同上，但是会显示键名称 |
+| `<TickIcon> keyId dir width height fontSize` | 同上，但是会显示键图标 |
 
 比如说，你可以使用以下代码快速生成一个 9K 带键盘信息显示的键盘：
 

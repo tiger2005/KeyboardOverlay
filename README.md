@@ -201,9 +201,9 @@ Let's say that the `default_size` of keys and blanks is `2 * default_font_size`.
 | `<Icon> keyId width height fontSize` | Same as `<Button>`, but use the icon as the key text. |
 | `<Kps> width height fontSize` | A KPS display block, with the size of `(default_size * width)px x (default_size * height)px` and the font size of `fontSize * default_font_size`. The arguments can be absent, with default values of 1 |
 | `<Total> width height fontSize` | A TOTAL display block, with the size of `(default_size * width)px x (default_size * height)px` and the font size of `fontSize * default_font_size`. The arguments can be absent, with default values of 1 |
-| `<Tick> keyId dir height width fontSize` | A tick for key with keyId as key, with the direction of dir (one of "right", "left", "top" and "bottom"), and some other settings that are the same as above. You can learn what 'tick' is from the example photo. The default value of "dir" is "right" |
-| `<TickText> keyId dir height width fontSize` | Same as above, but with key name |
-| `<TickIcon> keyId dir height width fontSize` | Same as above, but with key icon |
+| `<Tick> keyId dir width height fontSize` | A tick for key with keyId as key, with the direction of dir (one of "right", "left", "top" and "bottom"), and some other settings that are the same as above. You can learn what 'tick' is from the example photo. The default value of "dir" is "right" |
+| `<TickText> keyId dir width height fontSize` | Same as above, but with key name |
+| `<TickIcon> keyId dir width height fontSize` | Same as above, but with key icon |
 
 For example, you can quickly generate a 9-key keyboard with kps and total key by this code:
 
