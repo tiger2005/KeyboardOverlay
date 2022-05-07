@@ -302,3 +302,29 @@ body.at_desktop {
   width: 100%;
   left: 0;
 }
+
+.touchChange{
+  border-radius: 3px;
+  position: fixed;
+  top: 0%;
+  left: 0%;
+  height: 100%;
+  width: 100%;
+  display: grid;
+  place-items: center;
+  z-index: 8;
+  background: var(--key-background-color);
+  font-size: 40px;
+  color: var(--key-font-color);
+  pointer-events: none;
+}
+
+.touchChange.closed{
+  transition: var(--bounce-time);
+  opacity: 0;
+}
+
+.touchChange.open{
+  transition: 0.05s;
+  opacity: 1;
+}

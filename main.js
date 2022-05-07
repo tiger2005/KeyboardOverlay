@@ -27,11 +27,21 @@ app.on('ready', function() {
       enableRemoteModule: true
     }
   });
+  const os = require("os")
+
+  function getNativeWindowHandle_Int(win) {
+      let hbuf = win.getNativeWindowHandle()
+      if (os.endianness() == "LE")
+          return hbuf.readInt32LE()
+      else
+          return hbuf.readInt32BE()
+  }
+
   mainWindow.setMenu(null)
   mainWindow.setMaximizable(false)
   mainWindow.setResizable(false)
   mainWindow.loadURL('file://' + __dirname + '/index.html');
-  // mainWindow.openDevTools({mode: 'detach'});
+  mainWindow.openDevTools({mode: 'detach'});
   mainWindow.setAlwaysOnTop(true);
   if(process.platform === "win32")
     mainWindow .hookWindowMessage(278, function(e) {
@@ -42,13 +52,36 @@ app.on('ready', function() {
         mainWindow.setEnabled(true);
       }, 100);
       return true;
-    })
+    });
+  let windowOnReady = false;
+  let requireLevel = false;
   mainWindow.on('closed', function() {
     mainWindow = null;
   });
   ipcMain.on('window-close', function() {
     mainWindow.close();
   });
+  const superLevel = () => {
+    if(process.platform === "win32"){
+      const handleId = getNativeWindowHandle_Int(mainWindow);
+      require('child_process').exec(`windowTop\\win_x64.exe ${handleId}`, {
+        windowsHide: true
+      }, (error, stdout) => {
+        console.log("Windows API monitor quited (error: " + error + ", stdout: " + stdout + ")");
+      });
+    }
+    else{
+      mainWindow.setAlwaysOnTop(true, "screen-saver");
+      mainWindow.setVisibleOnAllWorkspaces(true);
+    }
+  };
+  ipcMain.on('window-super-top', function() {
+    if(windowOnReady === true)
+      superLevel();
+    else
+      requireLevel = true;
+  });
+
   mainWindow.on('maximize', function () {
    // mainWindow.webContents.send('main-window-max');
   })
@@ -57,5 +90,10 @@ app.on('ready', function() {
   })
   mainWindow.on('ready-to-show', function () {
     mainWindow.show();
+    windowOnReady = true;
+    if(requireLevel === true){
+      superLevel();
+      requireLevel = false;
+    }
   })
 });

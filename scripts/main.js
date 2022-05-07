@@ -31,6 +31,8 @@
   let lockShortcutInfo = {};
   let useCleanShortcut = false;
   let cleanShortcutInfo = {};
+  let useTouchShortcut = false;
+  let touchShortcutInfo = {};
 
   const keyIdMask = (x) => {
     if(keyMaskList[x] !== undefined)
@@ -171,8 +173,13 @@
       let len = dom.width();
       let moveTime = len / (tickSpeed * majorFontSize);
       let ele = undefined;
-      dom.append(ele = $(`<div class='oneTick' id=${tkIdx} style="width: ${2 * len}px; transition: transform ${2 * moveTime}s linear; right: ${len}px"></div>`));
-      setTimeout(() => {
+      dom.append(`<div class='oneTick' id=${tkIdx} style="width: ${2 * len}px; transition: transform ${2 * moveTime}s linear; right: ${len}px; transform: translateX(0)"></div>`);
+      var inv = setInterval(() => {
+        ele = $(`.tickDisplayer[index=${idx}] .oneTick[id=${tkIdx}]`);
+        if(ele.length >= 1)
+          clearInterval(inv);
+        else
+          return;
         ele.css("transform", `translateX(${2 * len}px)`);
         setTimeout(() => {
           animationEnd[tkIdx] = true;
@@ -183,8 +190,13 @@
       let len = dom.width();
       let moveTime = len / (tickSpeed * majorFontSize);
       let ele = undefined;
-      dom.append(ele = $(`<div class='oneTick' id=${tkIdx} style="width: ${2 * len}px; transition: transform ${2 * moveTime}s linear; left: ${len}px"></div>`));
-      setTimeout(() => {
+      dom.append((`<div class='oneTick' id=${tkIdx} style="width: ${2 * len}px; transition: transform ${2 * moveTime}s linear; left: ${len}px; transform: translateX(0)"></div>`));
+      var inv = setInterval(() => {
+        ele = $(`.tickDisplayer[index=${idx}] .oneTick[id=${tkIdx}]`);
+        if(ele.length >= 1)
+          clearInterval(inv);
+        else
+          return;
         ele.css("transform", `translateX(${-2 * len}px)`);
         setTimeout(() => {
           animationEnd[tkIdx] = true;
@@ -195,8 +207,13 @@
       let len = dom.height();
       let moveTime = len / (tickSpeed * majorFontSize);
       let ele = undefined;
-      dom.append(ele = $(`<div class='oneTick' id=${tkIdx} style="height: ${2 * len}px; transition: transform ${2 * moveTime}s linear; bottom: ${len}px"></div>`));
-      setTimeout(() => {
+      dom.append((`<div class='oneTick' id=${tkIdx} style="height: ${2 * len}px; transition: transform ${2 * moveTime}s linear; bottom: ${len}px; transform: translateY(0)"></div>`));
+      var inv = setInterval(() => {
+        ele = $(`.tickDisplayer[index=${idx}] .oneTick[id=${tkIdx}]`);
+        if(ele.length >= 1)
+          clearInterval(inv);
+        else
+          return;
         ele.css("transform", `translateY(${2 * len}px)`);
         setTimeout(() => {
           animationEnd[tkIdx] = true;
@@ -207,8 +224,13 @@
       let len = dom.height();
       let moveTime = len / (tickSpeed * majorFontSize);
       let ele = undefined;
-      dom.append(ele = $(`<div class='oneTick' id=${tkIdx} style="height: ${2 * len}px; transition: transform ${2 * moveTime}s linear; top: ${len}px"></div>`));
-      setTimeout(() => {
+      dom.append((`<div class='oneTick' id=${tkIdx} style="height: ${2 * len}px; transition: transform ${2 * moveTime}s linear; top: ${len}px; transform: translateY(0)"></div>`));
+      var inv = setInterval(() => {
+        ele = $(`.tickDisplayer[index=${idx}] .oneTick[id=${tkIdx}]`);
+        if(ele.length >= 1)
+          clearInterval(inv);
+        else
+          return;
         ele.css("transform", `translateY(${-2 * len}px)`);
         setTimeout(() => {
           animationEnd[tkIdx] = true;
@@ -222,130 +244,160 @@
     let dom = $(`.tickDisplayer[index=${idx}]`);
     let tkIdx = tickIndexToEvent[idx];
     tickIndexToEvent[idx] = 0;
-    if(dom.hasClass("right")){
-      let len = dom.width();
-      let ele = $(`.oneTick[id=${tkIdx}]`);
-      let moveTime = len / (tickSpeed * majorFontSize);
-      if(animationEnd[tkIdx]){
-        ele.remove();
-        delete animationEnd[tkIdx];
-        tkIdx = ++ tickEventIndex;
-        dom.append(ele = $(`<div class='oneTick' id=${tkIdx} style="width: ${len}px; transition: transform ${moveTime}s linear; right: 0px"></div>`));
-        setTimeout(() => {
-          ele.css("transform", `translateX(${len}px)`);
-          setTimeout(() => {
+    let ele = $(`.tickDisplayer[index=${idx}] .oneTick[id=${tkIdx}]`);
+    let inv = setInterval(() => {
+      if(ele.length === 0)
+        ele = $(`.tickDisplayer[index=${idx}] .oneTick[id=${tkIdx}]`);
+      else {
+        clearInterval(inv);
+        if(dom.hasClass("right")){
+          let len = dom.width();
+          let moveTime = len / (tickSpeed * majorFontSize);
+          if(animationEnd[tkIdx] === true){
             ele.remove();
-          }, moveTime * 1000);
-        }, 20);
-      }
-      else{
-        let p = ele.position().left;
-        p = 2 * len + p;
-        p = Math.max(p, 0.05 * (moveTime * majorFontSize));
-        p = Math.max(p, 4);
-        ele.css("width", Math.ceil(p));
-        setTimeout(() => {
-          ele.css("width", Math.ceil(p));
-        }, 20);
-        setTimeout(() => {
-          ele.remove();
-          delete animationEnd[tkIdx];
-        }, moveTime * 1000);
-      }
-    }
-    else if(dom.hasClass("left")){
-      let len = dom.width();
-      let ele = $(`.oneTick[id=${tkIdx}]`);
-      let moveTime = len / (tickSpeed * majorFontSize);
-      if(animationEnd[tkIdx]){
-        ele.remove();
-        delete animationEnd[tkIdx];
-        tkIdx = ++ tickEventIndex;
-        dom.append(ele = $(`<div class='oneTick' id=${tkIdx} style="width: ${len}px; transition: transform ${moveTime}s linear; left: 0px"></div>`));
-        setTimeout(() => {
-          ele.css("transform", `translateX(${-1 * len}px)`);
-          setTimeout(() => {
+            delete animationEnd[tkIdx];
+            tkIdx = ++ tickEventIndex;
+            dom.append(ele = $(`<div class='oneTick' id=${tkIdx} style="width: ${len}px; transition: transform ${moveTime}s linear; right: 0px"></div>`));
+            setTimeout(() => {
+              ele.css("transform", `translateX(${len}px)`);
+              setTimeout(() => {
+                ele.remove();
+              }, moveTime * 1000);
+            }, 20);
+          }
+          else{
+            let p = ele.position().left;
+            p = 2 * len + p;
+            p += 0.05 * (moveTime * majorFontSize);
+            p = Math.max(p, 4);
+            ele.css("width", Math.ceil(p));
+            setTimeout(() => {
+              ele.css("width", Math.ceil(p));
+            }, 20);
+            setTimeout(() => {
+              ele.remove();
+              delete animationEnd[tkIdx];
+            }, moveTime * 1000);
+          }
+        }
+        else if(dom.hasClass("left")){
+          let len = dom.width();
+          let moveTime = len / (tickSpeed * majorFontSize);
+          if(animationEnd[tkIdx] === true){
             ele.remove();
-          }, moveTime * 1000);
-        }, 20);
-      }
-      else{
-        let p = ele.position().left;
-        p = len - p;
-        p = Math.max(p, 0.05 * (moveTime * majorFontSize));
-        p = Math.max(p, 4);
-        ele.css("width", Math.ceil(p));
-        setTimeout(() => {
-          ele.css("width", Math.ceil(p));
-        }, 20);
-        setTimeout(() => {
-          ele.remove();
-          delete animationEnd[tkIdx];
-        }, moveTime * 1000);
-      }
-    }
-    else if(dom.hasClass("down")){
-      let len = dom.height();
-      let ele = $(`.oneTick[id=${tkIdx}]`);
-      let moveTime = len / (tickSpeed * majorFontSize);
-      if(animationEnd[tkIdx]){
-        ele.remove();
-        delete animationEnd[tkIdx];
-        tkIdx = ++ tickEventIndex;
-        dom.append(ele = $(`<div class='oneTick' id=${tkIdx} style="height: ${len}px; transition: transform ${moveTime}s linear; bottom: 0px"></div>`));
-        setTimeout(() => {
-          ele.css("transform", `translateY(${len}px)`);
-          setTimeout(() => {
+            delete animationEnd[tkIdx];
+            tkIdx = ++ tickEventIndex;
+            dom.append(ele = $(`<div class='oneTick' id=${tkIdx} style="width: ${len}px; transition: transform ${moveTime}s linear; left: 0px"></div>`));
+            setTimeout(() => {
+              ele.css("transform", `translateX(${-1 * len}px)`);
+              setTimeout(() => {
+                ele.remove();
+              }, moveTime * 1000);
+            }, 20);
+          }
+          else{
+            let p = ele.position().left;
+            p = len - p;
+            p += 0.05 * (moveTime * majorFontSize);
+            p = Math.max(p, 4);
+            ele.css("width", Math.ceil(p));
+            setTimeout(() => {
+              ele.css("width", Math.ceil(p));
+            }, 20);
+            setTimeout(() => {
+              ele.remove();
+              delete animationEnd[tkIdx];
+            }, moveTime * 1000);
+          }
+        }
+        else if(dom.hasClass("down")){
+          let len = dom.height();
+          let moveTime = len / (tickSpeed * majorFontSize);
+          if(animationEnd[tkIdx] === true){
             ele.remove();
-          }, moveTime * 1000);
-        }, 20);
+            delete animationEnd[tkIdx];
+            tkIdx = ++ tickEventIndex;
+            dom.append(ele = $(`<div class='oneTick' id=${tkIdx} style="height: ${len}px; transition: transform ${moveTime}s linear; bottom: 0px"></div>`));
+            setTimeout(() => {
+              ele.css("transform", `translateY(${len}px)`);
+              setTimeout(() => {
+                ele.remove();
+              }, moveTime * 1000);
+            }, 20);
+          }
+          else{
+            let p = ele.position().top;
+            p = 2 * len + p;
+            p += 0.05 * (moveTime * majorFontSize);
+            p = Math.max(p, 4);
+            ele.css("height", Math.ceil(p));
+            setTimeout(() => {
+              ele.css("height", Math.ceil(p));
+            }, 20);
+            setTimeout(() => {
+              ele.remove();
+              delete animationEnd[tkIdx];
+            }, moveTime * 1000);
+          }
+        }
+        else{
+          let len = dom.height();
+          let moveTime = len / (tickSpeed * majorFontSize);
+          if(animationEnd[tkIdx] === true){
+            ele.remove();
+            delete animationEnd[tkIdx];
+            tkIdx = ++ tickEventIndex;
+            dom.append(ele = $(`<div class='oneTick' id=${tkIdx} style="height: ${len}px; transition: transform ${moveTime}s linear; top: 0px"></div>`));
+            setTimeout(() => {
+              ele.css("transform", `translateY(${-1 * len}px)`);
+              setTimeout(() => {
+                ele.remove();
+              }, moveTime * 1000);
+            }, 20);
+          }
+          else{
+            let p = ele.position().top;
+            p = len - p;
+            p += 0.05 * (moveTime * majorFontSize);
+            p = Math.max(p, 4);
+            ele.css("height", Math.ceil(p));
+            setTimeout(() => {
+              ele.css("height", Math.ceil(p));
+            }, 20);
+            setTimeout(() => {
+              ele.remove();
+              delete animationEnd[tkIdx];
+            }, moveTime * 1000);
+          }
+        }
       }
-      else{
-        let p = ele.position().top;
-        p = 2 * len + p;
-        p = Math.max(p, 0.05 * (moveTime * majorFontSize));
-        p = Math.max(p, 4);
-        ele.css("height", Math.ceil(p));
-        setTimeout(() => {
-          ele.css("height", Math.ceil(p));
-        }, 20);
-        setTimeout(() => {
-          ele.remove();
-          delete animationEnd[tkIdx];
-        }, moveTime * 1000);
-      }
+    }, 20);
+  }
+
+  let enableTouch = true;
+  let touchTimeout = null;
+
+  const toggleTouch = () => {
+    $(".touchChange").removeClass("closed").addClass("open");
+    if(touchTimeout == null)
+      clearTimeout(touchTimeout);
+    if(enableTouch === true){
+      $(".touchChange").html(`<i class='fas fa-ban' style='color: red'></i>`);
+      if(runInElectron)
+        win.setIgnoreMouseEvents(true);
+      touchTimeout = setTimeout(() => {
+        $(".touchChange").removeClass("open").addClass("closed");
+      }, 1000);
     }
     else{
-      let len = dom.height();
-      let ele = $(`.oneTick[id=${tkIdx}]`);
-      let moveTime = len / (tickSpeed * majorFontSize);
-      if(animationEnd[tkIdx]){
-        ele.remove();
-        delete animationEnd[tkIdx];
-        tkIdx = ++ tickEventIndex;
-        dom.append(ele = $(`<div class='oneTick' id=${tkIdx} style="height: ${len}px; transition: transform ${moveTime}s linear; top: 0px"></div>`));
-        setTimeout(() => {
-          ele.css("transform", `translateY(${-1 * len}px)`);
-          setTimeout(() => {
-            ele.remove();
-          }, moveTime * 1000);
-        }, 20);
-      }
-      else{
-        let p = ele.position().top;
-        p = len - p;
-        p = Math.max(p, 0.05 * (moveTime * majorFontSize));
-        p = Math.max(p, 4);
-        ele.css("height", Math.ceil(p));
-        setTimeout(() => {
-          ele.css("height", Math.ceil(p));
-        }, 20);
-        setTimeout(() => {
-          ele.remove();
-          delete animationEnd[tkIdx];
-        }, moveTime * 1000);
-      }
+      $(".touchChange").html(`<i class='fas fa-arrow-pointer' style='color: inherit'></i>`);
+      if(runInElectron)
+        win.setIgnoreMouseEvents(false);
+      touchTimeout = setTimeout(() => {
+        $(".touchChange").removeClass("open").addClass("closed");
+      }, 1000);
     }
+    enableTouch = ! enableTouch;
   }
 
   let hitMatrix = {};
@@ -395,6 +447,24 @@
         usage &= (p === cleanShortcutInfo.id.toUpperCase());
         if(usage)
           cleanKeyboard();
+      }
+      if(useTouchShortcut) {
+        var usage = true;
+        if(typeof e === "string"){
+          usage &= (false === touchShortcutInfo.shiftKey);
+          usage &= (false === touchShortcutInfo.altKey);
+          usage &= (false === touchShortcutInfo.ctrlKey);
+          usage &= (false === touchShortcutInfo.metaKey);
+        }
+        else{
+          usage &= (e.shiftKey === touchShortcutInfo.shiftKey);
+          usage &= (e.altKey === touchShortcutInfo.altKey);
+          usage &= (e.ctrlKey === touchShortcutInfo.ctrlKey);
+          usage &= (e.metaKey === touchShortcutInfo.metaKey);
+        }
+        usage &= (p === touchShortcutInfo.id.toUpperCase());
+        if(usage)
+          toggleTouch();
       }
       return;
     }
@@ -504,6 +574,24 @@
       if(usage)
         cleanKeyboard();
     }
+    if(useTouchShortcut) {
+      var usage = true;
+      if(typeof e === "string"){
+        usage &= (false === touchShortcutInfo.shiftKey);
+        usage &= (false === touchShortcutInfo.altKey);
+        usage &= (false === touchShortcutInfo.ctrlKey);
+        usage &= (false === touchShortcutInfo.metaKey);
+      }
+      else{
+        usage &= (e.shiftKey === touchShortcutInfo.shiftKey);
+        usage &= (e.altKey === touchShortcutInfo.altKey);
+        usage &= (e.ctrlKey === touchShortcutInfo.ctrlKey);
+        usage &= (e.metaKey === touchShortcutInfo.metaKey);
+      }
+      usage &= (p === touchShortcutInfo.id.toUpperCase());
+      if(usage)
+        toggleTouch();
+    }
   };
   const keyupEvent = (e, wheel) => {
     if(! isReady)
@@ -610,6 +698,7 @@
     $("body").addClass("at_desktop");
     $(".innerContent").css("position", "relative");
     $(".lockerMask").css("position", "absolute");
+    $(".touchChange").css("position", "absolute");
     $("html").keydown(keydownEvent);
     $("html").keyup(keyupEvent);
     $("html").bind("mousedown", (e) => {
@@ -745,14 +834,10 @@
             win.restore();
           })
         }
+        if(data.superTopLevel === true && runInElectron)
+          ipcRenderer.send("window-super-top");
         if(typeof data.bounceTime === "number")
           document.documentElement.style.setProperty("--bounce-time", data.bounceTime + "ms");
-        // if(typeof data.upgradeTopLevel === boolean
-        //   && data.upgradeTopLevel === true
-        //   && data.alwaysOnTop === true){
-        //   if(runInElectron)
-        //     ipcRenderer.send("window-top-level");
-        // }
         if(typeof data.lockShortcut === "object" && !data.lockShortcut.hasOwnProperty("length")){
           if(typeof data.lockShortcut.id !== "string"
           || typeof data.lockShortcut.shiftKey !== "boolean"
@@ -778,6 +863,19 @@
           }
           useCleanShortcut = true;
           cleanShortcutInfo = data.cleanShortcut;
+        }
+        if(typeof data.touchShortcut === "object" && !data.touchShortcut.hasOwnProperty("length")){
+          if(typeof data.touchShortcut.id !== "string"
+          || typeof data.touchShortcut.shiftKey !== "boolean"
+          || typeof data.touchShortcut.ctrlKey !== "boolean"
+          || typeof data.touchShortcut.altKey !== "boolean"
+          || typeof data.touchShortcut.metaKey !== "boolean"
+          ){
+            setErrorMessage("Touch shortcut options not correct.");
+            return;
+          }
+          useTouchShortcut = true;
+          touchShortcutInfo = data.touchShortcut;
         }
         if(typeof(data.tickSpeed) === "number")
           tickSpeed = data.tickSpeed <= 0 ? 10 : data.tickSpeed;
