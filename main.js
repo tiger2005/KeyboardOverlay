@@ -41,7 +41,7 @@ app.on('ready', function() {
   mainWindow.setMaximizable(false)
   mainWindow.setResizable(false)
   mainWindow.loadURL('file://' + __dirname + '/index.html');
-  mainWindow.openDevTools({mode: 'detach'});
+  // mainWindow.openDevTools({mode: 'detach'});
   mainWindow.setAlwaysOnTop(true);
   if(process.platform === "win32")
     mainWindow .hookWindowMessage(278, function(e) {
