@@ -70,6 +70,7 @@ npm rebuild --runtime=electron --target=12.0.0 --disturl=https://atom.io/downloa
 
 |           键值           |                类型                 |                内容                |
 | :----------------------: | :---------------------------------: | :--------------------------------: |
+| 颜色和字体配置 | vvv | vvv |
 |     backgroundColor      |               string                |              背景颜色              |
 |    keyBackgroundColor    |               string                |     按键颜色（会被热力图覆盖）     |
 |       keyFontColor       |               string                |            按键字体颜色            |
@@ -78,19 +79,26 @@ npm rebuild --runtime=electron --target=12.0.0 --disturl=https://atom.io/downloa
 |    keyActiveFontColor    |               string                |       T按键按下后的字体颜色        |
 |         fontSize         |               number                |            默认字体大小            |
 |        fontFamily        |               string                |           所有文字的字体           |
+|        bounceTime        |               number                |        一个按键弹起的毫秒数        |
+| 窗口设置 | vvv | vvv |
 |       alwaysOnTop        |               boolean               |          选择是否置顶键盘          |
+|       antiMinimize       |               boolean               |       在尝试最小化时自动复原       |
+| superTopLevel⚠ | boolean | 尝试使用一些方法让键盘保持在最上方 |
+| 功能 | vvv | vvv |
 |       toolBarMode        |   "none", "debug", "kps" or "tot"   |     打开调试、KPS 和仅统计模式     |
 |     toolBarFontSize      |               number                |           工具栏字体大小           |
 |         keyCount         |               boolean               |       显示每个按键的点击次数       |
 |        keyHeatmap        | "none", "light", "dark" or a number |      打开热力图并且设置明亮度      |
 |    keyTotalCountMode     |        "normal" or "strict"         |          打开严格统计模式          |
 |     displayShortcut      |               boolean               |           打开快捷键显示           |
-|       antiMinimize       |               boolean               |       在尝试最小化时自动复原       |
-|        bounceTime        |               number                |        一个按键弹起的毫秒数        |
-|       lockShortcut       |               object                |          锁定的快捷键信息        |
-|      cleanShortcut       |               object                |          清空的快捷键信息        |
 |        tickSpeed         |               number                |            点击波动速度          |
 |    tickBackgroundColor   |               string                |          点击波动背景颜色        |
+| 快捷键 | vvv | vvv |
+|       lockShortcut       |               object                |          锁定的快捷键信息        |
+|      cleanShortcut       |               object                |          清空的快捷键信息        |
+|      touchShortcut       |               object                |          允许或者禁止点击        |
+
+⚠：实验性功能
 
 一些细节如下：
 
@@ -116,6 +124,44 @@ npm rebuild --runtime=electron --target=12.0.0 --disturl=https://atom.io/downloa
 
 **清空快捷键**：设置方法和锁定快捷键一样。在清空键盘后，所有的按键点击次数（包括热力图和总数）将会清零。
 
+**波动**：将会在之后的 `map.txt` 中讲到。
+
+**最高窗口级别**：在 Linux 和 MacOS 下，我们使用 Electron 自带的函数实现。但是在 Windows 下我们不得不使用 Win32 API 达成这个目标。我写了一个程序：
+
+```cpp
+#include <windows.h>
+#include <cstdio>
+using namespace std;
+
+unsigned int hw[1];
+
+int main(int argc, char* argv[]) {
+  if(argc == 1){
+    printf("No argument found");
+    return 2;
+  }
+  hw[0] = atoll(argv[1]);
+  HWND hwnd = *(HWND*)hw;
+  ::SetForegroundWindow(hwnd);
+  int ret = ::SetWindowPos(hwnd, HWND_TOPMOST, 0, 0, 0, 0, SWP_NOSIZE | SWP_NOMOVE | SWP_SHOWWINDOW);
+  if(!ret){
+    printf("Cannot find window");
+    return 1;
+  }
+  while(1){
+    int ret = ::SetWindowPos(hwnd, HWND_TOPMOST, 0, 0, 0, 0, SWP_NOSIZE | SWP_NOMOVE | SWP_SHOWWINDOW);
+    if(!ret)
+      break;
+    Sleep(100);
+  }
+  return 0;
+}
+```
+
+这个代码来自 `/windowTop/windows.cpp`，并直接用户构造 `win_x64.exe`。你也可以使用 MinGW 自行编译。这个程序在一秒内尝试置顶窗口十次。
+
+在一个全屏软件下点击这个键盘时，全屏软件将会自动关闭。此时你需要使用 **点击快捷键** 禁止键盘的点击事件。
+
 如果你使用默认设置，你将会得到一个亮色、无功能键盘。以下是暗色的配色方案：
 
 ```json
@@ -128,8 +174,6 @@ npm rebuild --runtime=electron --target=12.0.0 --disturl=https://atom.io/downloa
   "keyActiveFontColor": "white",
 }
 ```
-
-**波动**：将会在之后的 `map.txt` 中讲到。
 
 ---
 

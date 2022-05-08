@@ -70,6 +70,7 @@ This is a json file including all the function switchers and style settings. Key
 
 | Key | Type | Value |
 | :-: | :-: | :-: | 
+| Color Scheme & Font | vvv | vvv |
 | backgroundColor | string | General background color |
 | keyBackgroundColor | string | The color of keys (will be overwritten while using heatmap) |
 | keyFontColor | string | The font color of keys |
@@ -78,19 +79,26 @@ This is a json file including all the function switchers and style settings. Key
 | keyActiveFontColor | string | The font color of keys while active |
 | fontSize | number | Default font size for keys |
 | fontFamily | string | Font family for all the texts |
+| bounceTime | number | Milliseconds for a key to bounce up |
+| Window Settings | vvv | vvv |
 | alwaysOnTop | boolean | Select if the keyboard is always at the front of all the windows |
+| antiMinimize | boolean | Automately restore while minimizing the keyboard |
+| superTopLevel⚠ | boolean | Use some method to remain the keyboard at the top |
+| Functions | vvv | vvv |
 | toolBarMode | "none", "debug", "kps" or "tot" | Open debug mode, kps mode or total-only mode |
 | toolBarFontSize | number | Font size for toolbar |
 | keyCount | boolean | Display press count of each key |
 | keyHeatmap | "none", "light", "dark" or a number | Open heatmap and set brightness |
 | keyTotalCountMode | "normal" or "strict" | Open strict count mode |
 | displayShortcut | boolean | Open shortcut key displayer |
-| antiMinimize | boolean | Automately restore while minimizing the keyboard |
-| bounceTime | number | Milliseconds for a key to bounce up |
-| lockShortcut | object | Information of lock shortcut |
-| cleanShortcut | object | Information of clean shortcut |
 | tickSpeed | number | Tick movement speed |
 | tickBackgroundColor | string | Tick background color |
+| Shortcuts | vvv | vvv |
+| lockShortcut | object | Information of lock shortcut |
+| cleanShortcut | object | Information of clean shortcut |
+| touchShortcut | object | Enable or disable touch actions for the keyboard |
+
+⚠: Experimental function
 
 Some details below:
 
@@ -117,6 +125,42 @@ The example above means `Ctrl + Shift + L`. If you use shortcut to lock / unlock
 **Clean shortcut**: the setting types are the same as key shortcut. after cleaning the keyboard, all the key count (so as the key heatmap and total count) will be set as zero.
 
 **Tick**: will be mentioned in `map.txt` section.
+
+**Super top level**: In Linux and MacOS, we use functions in Electron to reach the goal. But in Windows system, win32 api muse be used. Here I tried to use a executive file.
+
+```cpp
+#include <windows.h>
+#include <cstdio>
+using namespace std;
+
+unsigned int hw[1];
+
+int main(int argc, char* argv[]) {
+  if(argc == 1){
+    printf("No argument found");
+    return 2;
+  }
+  hw[0] = atoll(argv[1]);
+  HWND hwnd = *(HWND*)hw;
+  ::SetForegroundWindow(hwnd);
+  int ret = ::SetWindowPos(hwnd, HWND_TOPMOST, 0, 0, 0, 0, SWP_NOSIZE | SWP_NOMOVE | SWP_SHOWWINDOW);
+  if(!ret){
+    printf("Cannot find window");
+    return 1;
+  }
+  while(1){
+    int ret = ::SetWindowPos(hwnd, HWND_TOPMOST, 0, 0, 0, 0, SWP_NOSIZE | SWP_NOMOVE | SWP_SHOWWINDOW);
+    if(!ret)
+      break;
+    Sleep(100);
+  }
+  return 0;
+}
+```
+
+This code is from `/windowTop/windows.cpp`, and `win_x64.exe` is straightly built with it. You can use MinGW to build it yourself. The code tries 10 times in a second to lift the keyboard up.
+
+If you are in a fullscreen software and click the keyboard, the software will be closed automately. You can use **Touch shortcut** to disable click actions.
 
 If you use default settings, you can get a light keyboard with no functions. Here is a color scheme for a dark keyboard:
 
