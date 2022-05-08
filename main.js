@@ -63,12 +63,19 @@ app.on('ready', function() {
   });
   const superLevel = () => {
     if(process.platform === "win32"){
-      const handleId = getNativeWindowHandle_Int(mainWindow);
-      require('child_process').exec(`windowTop\\win_x64.exe ${handleId}`, {
-        windowsHide: true
-      }, (error, stdout) => {
-        console.log("Windows API monitor quited (error: " + error + ", stdout: " + stdout + ")");
-      });
+      (() => async {
+        const handleId = getNativeWindowHandle_Int(mainWindow);
+        import { U } from 'win32-api';
+        const user32 = U.load();
+        user32.SetForegroundWindow(handleId);
+        function wait(ms) {
+          return new Promise(resolve => setTimeout(() => resolve(), ms));
+        };
+        while(true) {
+          user32.BringWindowToTop(handleId);
+          await wait(100);
+        }
+      })();
     }
     else{
       mainWindow.setAlwaysOnTop(true, "screen-saver");
