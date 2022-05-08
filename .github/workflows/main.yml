@@ -87,4 +87,4 @@ jobs:
         with:
           prerelease: false
           draft: false
-          files: artifact/*
+          files: artifact/**
