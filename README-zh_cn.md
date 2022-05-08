@@ -158,7 +158,7 @@ int main(int argc, char* argv[]) {
 }
 ```
 
-这个代码来自 `/windowTop/windows.cpp`，并直接用户构造 `win_x64.exe`。你也可以使用 MinGW 自行编译。这个程序在一秒内尝试置顶窗口十次。
+这个代码来自 `/windowTop/windows.cpp`，并直接用于构造 `win_x64.exe`。你也可以使用 MinGW 自行编译。这个程序在一秒内尝试置顶窗口十次。
 
 在一个全屏软件下点击这个键盘时，全屏软件将会自动关闭。此时你需要使用 **点击快捷键** 禁止键盘的点击事件。
 
