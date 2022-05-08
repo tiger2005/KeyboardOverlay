@@ -70,7 +70,7 @@ This is a json file including all the function switchers and style settings. Key
 
 | Key | Type | Value |
 | :-: | :-: | :-: | 
-| Color Scheme & Font | vvv | vvv |
+| **Color Scheme & Font** | **vvv** | **vvv** |
 | backgroundColor | string | General background color |
 | keyBackgroundColor | string | The color of keys (will be overwritten while using heatmap) |
 | keyFontColor | string | The font color of keys |
@@ -80,11 +80,11 @@ This is a json file including all the function switchers and style settings. Key
 | fontSize | number | Default font size for keys |
 | fontFamily | string | Font family for all the texts |
 | bounceTime | number | Milliseconds for a key to bounce up |
-| Window Settings | vvv | vvv |
+| **Window Settings** | **vvv** | **vvv** |
 | alwaysOnTop | boolean | Select if the keyboard is always at the front of all the windows |
 | antiMinimize | boolean | Automately restore while minimizing the keyboard |
 | superTopLevel⚠ | boolean | Use some method to remain the keyboard at the top |
-| Functions | vvv | vvv |
+| **Functions** | **vvv** | **vvv** |
 | toolBarMode | "none", "debug", "kps" or "tot" | Open debug mode, kps mode or total-only mode |
 | toolBarFontSize | number | Font size for toolbar |
 | keyCount | boolean | Display press count of each key |
@@ -93,7 +93,7 @@ This is a json file including all the function switchers and style settings. Key
 | displayShortcut | boolean | Open shortcut key displayer |
 | tickSpeed | number | Tick movement speed |
 | tickBackgroundColor | string | Tick background color |
-| Shortcuts | vvv | vvv |
+| **Shortcuts** | **vvv** | **vvv** |
 | lockShortcut | object | Information of lock shortcut |
 | cleanShortcut | object | Information of clean shortcut |
 | touchShortcut | object | Enable or disable touch actions for the keyboard |

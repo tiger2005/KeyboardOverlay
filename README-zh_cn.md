@@ -70,7 +70,7 @@ npm rebuild --runtime=electron --target=12.0.0 --disturl=https://atom.io/downloa
 
 |           键值           |                类型                 |                内容                |
 | :----------------------: | :---------------------------------: | :--------------------------------: |
-| 颜色和字体配置 | vvv | vvv |
+| **颜色和字体配置** | **vvv** | **vvv** |
 |     backgroundColor      |               string                |              背景颜色              |
 |    keyBackgroundColor    |               string                |     按键颜色（会被热力图覆盖）     |
 |       keyFontColor       |               string                |            按键字体颜色            |
@@ -80,11 +80,11 @@ npm rebuild --runtime=electron --target=12.0.0 --disturl=https://atom.io/downloa
 |         fontSize         |               number                |            默认字体大小            |
 |        fontFamily        |               string                |           所有文字的字体           |
 |        bounceTime        |               number                |        一个按键弹起的毫秒数        |
-| 窗口设置 | vvv | vvv |
+| **窗口设置** | **vvv** | **vvv** |
 |       alwaysOnTop        |               boolean               |          选择是否置顶键盘          |
 |       antiMinimize       |               boolean               |       在尝试最小化时自动复原       |
 | superTopLevel⚠ | boolean | 尝试使用一些方法让键盘保持在最上方 |
-| 功能 | vvv | vvv |
+| **功能** | **vvv** | **vvv** |
 |       toolBarMode        |   "none", "debug", "kps" or "tot"   |     打开调试、KPS 和仅统计模式     |
 |     toolBarFontSize      |               number                |           工具栏字体大小           |
 |         keyCount         |               boolean               |       显示每个按键的点击次数       |
@@ -93,7 +93,7 @@ npm rebuild --runtime=electron --target=12.0.0 --disturl=https://atom.io/downloa
 |     displayShortcut      |               boolean               |           打开快捷键显示           |
 |        tickSpeed         |               number                |            点击波动速度          |
 |    tickBackgroundColor   |               string                |          点击波动背景颜色        |
-| 快捷键 | vvv | vvv |
+| **快捷键** | **vvv** | **vvv** |
 |       lockShortcut       |               object                |          锁定的快捷键信息        |
 |      cleanShortcut       |               object                |          清空的快捷键信息        |
 |      touchShortcut       |               object                |          允许或者禁止点击        |
