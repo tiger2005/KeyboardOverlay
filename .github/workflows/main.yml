@@ -1,25 +1,19 @@
-name: Build & Release
-
+name: Build/release
 on:
   push:
     tags:
       - "*"
-
 permissions:
   contents: write
-
 jobs:
   build:
     runs-on: ${{ matrix.os }}
-
     strategy:
       matrix:
         os: [macos-latest, ubuntu-latest, windows-latest]
-
     steps:
       - name: Check out Git repository
         uses: actions/checkout@v1
-
       - name: Install Node.js, NPM and Yarn
         uses: actions/setup-node@v1
         with:
@@ -35,8 +29,6 @@ jobs:
           github_token: ${{ secrets.github_token }}
           release: false
           args: "--linux tar.gz"
-
-
       - name: Build/release Electron app (Windows)
         if: matrix.os == 'windows-latest'
         uses: samuelmeuli/action-electron-builder@v1
@@ -44,7 +36,6 @@ jobs:
           github_token: ${{ secrets.github_token }}
           release: false
           args: "--windows zip"
-
       - name: Build/release Electron app (MacOS)
         if: matrix.os == 'macos-latest'
         uses: samuelmeuli/action-electron-builder@v1
@@ -52,42 +43,24 @@ jobs:
           github_token: ${{ secrets.github_token }}
           release: false
           args: "--macos tar.gz"
-
-      - name: Upload artifact (Ubuntu)
+      - name: Upload release file (Ubuntu)
         if: matrix.os == 'ubuntu-latest'
-        uses: actions/upload-artifact@v3
-        with:
-          name: linux
-          path: build/*.tar.gz
-
-      - name: Upload artifact (Windows)
-        if: matrix.os == 'windows-latest'
-        uses: actions/upload-artifact@v3
-        with:
-          name: windows
-          path: build/*win.zip
-
-      - name: Upload artifact (MacOS)
-        if: matrix.os == 'macos-latest'
-        uses: actions/upload-artifact@v3
-        with:
-          name: macos
-          path: build/*mac.tar.gz
-
-  release:
-    runs-on: ubuntu-latest
-    if: ${{ startsWith(github.ref, 'refs/tags/v') }}
-    needs: build
-
-    steps:
-      - name: Download artifact
-        uses: actions/download-artifact@v3
-        with:
-            path: artifact
-
-      - name: Upload release file
         uses: softprops/action-gh-release@v1
         with:
           prerelease: false
-          draft: false
-          files: artifact/**
+          draft: true
+          files: build/*.tar.gz
+      - name: Upload release file (Windows)
+        if: matrix.os == 'windows-latest'
+        uses: softprops/action-gh-release@v1
+        with:
+          prerelease: false
+          draft: true
+          files: build/*win.zip
+      - name: Upload release file (MacOS)
+        if: matrix.os == 'macos-latest'
+        uses: softprops/action-gh-release@v1
+        with:
+          prerelease: false
+          draft: true
+          files: build/*mac.tar.gz
