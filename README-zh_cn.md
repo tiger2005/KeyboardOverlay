@@ -232,7 +232,7 @@ int main(int argc, char* argv[]) {
 
 ### map.txt
 
-这是一个描述键位布局的文件。你需要使用一个轻量语言米描述它们。
+这是一个描述键位布局的文件。你需要使用一个轻量语言来描述它们。
 我们定义每个按键和空白的 `default_size` 为 `2 * default_font_size`.
 
 |                  命令                  |                             含义                             |
